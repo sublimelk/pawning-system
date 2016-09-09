@@ -1,11 +1,12 @@
 <?php
 include './includes.php';
 
+$id = $_GET['id'];
 $user = User::getUser();
 
 if (isset($_POST['btnsubmit'])) {
     
-    $result = User::editUser($_POST);
+    User::editUser($id);
 }
 ?>
 <!DOCTYPE html> 
