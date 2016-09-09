@@ -5,7 +5,7 @@ class User {
     private $name;
     private $username;
     private $password;
- 
+
     public function setUser($data) {
         
     }
@@ -37,23 +37,21 @@ class User {
         }
     }
 
+    public function logoutUser() {
+
+        unset($_SESSION['login']);
+        unset($_SESSION['name']);
+
+        header('location: index.php');
+    }
+
     public function isLoginUser() {
-        
-        if ($_SESSION['login']) { 
+
+        if ($_SESSION['login']) {
             return TRUE;
         } else {
             return FALSE;
         }
-    }
-    
-    
-    
-    public function logoutUser(){
-        
-        unset($_SESSION['login']);
-        unset($_SESSION['name']);
-        
-        header('location: index.php');
     }
 
 }
