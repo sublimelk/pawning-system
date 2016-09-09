@@ -1,7 +1,9 @@
 <?php
 include './includes.php';
 
-if (isset($_POST['btnLogin'])) {
+$user = User::getUser();
+
+if (isset($_POST['btnsubmit'])) {
     
     $result = User::editUser($_POST);
 }
@@ -14,12 +16,11 @@ if (isset($_POST['btnLogin'])) {
     </head>
     <body>
         <form method="POST">
-            <input name="name" type="text" value="<?php echo $_SESSION['name']; ?>" />
-            <input name="username" type="text" value="<?php echo $_SESSION['username']; ?>"/>
-            <input name="password" type="password"  value="<?php echo $_SESSION['password']; ?>"/>
-            <input name="btnLogin" type="submit"  value="Login"/>
+            <input name="name" type="text" value="<?php echo $user['name']; ?>" /> <br>
+                <input name="username" type="text" value="<?php echo $user['username']; ?>"/> <br>
+            <input name="password" type="text"  value="<?php echo $user['password']; ?>"/> <br>
+            <input name="btnsubmit" type="submit"  value="Submit"/>
         </form>
 
     </body>
 </html>
-
