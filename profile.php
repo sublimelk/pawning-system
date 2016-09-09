@@ -16,8 +16,11 @@ if (isset($_POST['btnsubmit'])) {
     </head>
     <body>
         <form method="POST">
+            <label>Name :</label>
             <input name="name" type="text" value="<?php echo $user['name']; ?>" /> <br>
-                <input name="username" type="text" value="<?php echo $user['username']; ?>"/> <br>
+            <label>User Name :</label>
+            <input name="username" type="text" value="<?php echo $user['username']; ?>"/> <br>
+            <label>Password :</label>
             <input name="password" type="text"  value="<?php echo $user['password']; ?>"/> <br>
             <input name="btnsubmit" type="submit"  value="Submit"/>
         </form>
