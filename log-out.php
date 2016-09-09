@@ -1,3 +1,4 @@
 <?php
-$result = User::logoutUser();
+include './includes.php';
 
+User::logoutUser();
