@@ -6,22 +6,32 @@ class User {
     private $username;
     private $password;
 
+    public function __construct() {
+        session_start();
+
+        $_SESSION['login'] = TRUE;
+    }
+
     public function setUser($data) {
         
     }
 
-    public function getUser() {
+    public function getUser($id) {
         
     }
-    
-    
-    public function loginUser() {
-        
+
+    public function loginUser($data) {
+ 
+        $res = TRUE;
+
+        if ($res) { 
+            $_SESSION['login'] = TRUE;
+            $_SESSION['name'] = 'Mahesh';
+        }
     }
-    
 
     public function isLoginUser() {
-        
+        return FALSE;
     }
 
 }

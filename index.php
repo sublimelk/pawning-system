@@ -1,3 +1,13 @@
+<?php
+include './includes.php';
+
+if (!User::isLoginUser()) {
+    header('location: login.php');
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,7 +15,6 @@
         <title>Dashbord</title>
     </head>
     <body>
-        <?php
-        ?>
+        <?php ?>
     </body>
 </html>
