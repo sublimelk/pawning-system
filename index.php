@@ -2,11 +2,10 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Dashbord</title>
     </head>
     <body>
         <?php
-        
         ?>
     </body>
 </html>

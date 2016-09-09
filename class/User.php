@@ -13,6 +13,12 @@ class User {
     public function getUser() {
         
     }
+    
+    
+    public function loginUser() {
+        
+    }
+    
 
     public function isLoginUser() {
         
