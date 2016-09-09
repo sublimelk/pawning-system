@@ -14,7 +14,7 @@
 class DB {
 
     private $databseHost = "localhost";
-    private $databseName = "dddddddddddddddddd";
+    private $databseName = "pawning-system";
     private $databseUser = "root";
     private $databsePassword = "";
 
