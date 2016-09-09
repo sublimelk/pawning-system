@@ -16,6 +16,5 @@ if (!User::isLoginUser()) {
     </head>
     <body>
         <?php include './navigation.php'; ?>
-        <?php ?>
     </body>
 </html>
