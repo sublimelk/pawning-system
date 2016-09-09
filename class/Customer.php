@@ -16,7 +16,7 @@ class Customer {
         $this->password = $value;
     }
     
-    public function getCustomer(){
+    public function getCustomers(){
         $db = new DB();
         
         $sql = "SELECT * FROM customer ";
@@ -38,5 +38,15 @@ class Customer {
         
         return $result;
     } 
+    
+    public function editCustomer($id){
+        $db = new DB();
+        
+        $sql = "UPDATE `customer` SET `name` = '". $_POST['name'] ."', `id_num` = '". $_POST['id_num'] ."', `address` = '" .$_POST['address'] ."' , `phone` = '" .$_POST['phone'] ."' , `value` = '" .$_POST['value'] ."' WHERE id = $id ";
+        
+        $result = $db->readQuery($sql);
+        
+        return $result;
+    }
     
 }
