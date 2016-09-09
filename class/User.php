@@ -57,12 +57,14 @@ class User {
         header('location: index.php');
     }
     
-    public function viewUser(){
+    public function editUser($id){
+        $db = new DB();
         
-    }
-
-
-    public function editUser(){
+        $sql = "UPDATE `user` SET `name` = '". $_POST['name'] ."', `username` = '". $_POST['username'] ."', `password` = '" .$_POST['password'] ."' WHERE id = $id ";
+        
+        $result = $db->readQuery($sql);
+        
+        return $result;
         
     }
 
