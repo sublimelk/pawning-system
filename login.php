@@ -3,7 +3,8 @@
 include './includes.php';
 
 if (isset($_POST['btnLogin'])) {
-    User::loginUser($_POST);
+    
+    $result = User::loginUser($_POST);
 }
 ?>
 <!DOCTYPE html> 

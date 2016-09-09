@@ -5,13 +5,7 @@ class User {
     private $name;
     private $username;
     private $password;
-
-    public function __construct() {
-        session_start();
-
-        $_SESSION['login'] = TRUE;
-    }
-
+ 
     public function setUser($data) {
         
     }
@@ -21,17 +15,35 @@ class User {
     }
 
     public function loginUser($data) {
- 
-        $res = TRUE;
 
-        if ($res) { 
+        $db = new DB();
+
+        $sql = "SELECT `name` FROM `user` WHERE `username` = '" . $_POST['username'] . "' AND `password` = '" . $_POST['password'] . "' LIMIT 1 ";
+
+        $result = $db->readQuery($sql);
+
+        $row = mysql_fetch_assoc($result);
+
+
+        if ($row) {
+
             $_SESSION['login'] = TRUE;
-            $_SESSION['name'] = 'Mahesh';
+            $_SESSION['name'] = $row['name'];
+
+            header('location: index.php');
+        } else {
+
+            return FALSE;
         }
     }
 
     public function isLoginUser() {
-        return FALSE;
+        
+        if ($_SESSION['login']) { 
+            return TRUE;
+        } else {
+            return FALSE;
+        }
     }
 
 }
