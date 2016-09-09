@@ -13,7 +13,16 @@ class User {
     }
 
     public function getUser() {
-        return $this-> User;
+        
+        $db = new DB();
+        
+        $sql = "SELECT * FROM user ";
+        
+        $result = $db->readQuery($sql);
+        
+        $row = mysql_fetch_assoc($result);
+        
+        return $row;
     }
 
     public function loginUser($data) {
@@ -31,6 +40,7 @@ class User {
 
             $_SESSION['login'] = TRUE;
             $_SESSION['name'] = $row['name'];
+            
 
             header('location: index.php');
         } else {
@@ -47,6 +57,11 @@ class User {
         header('location: index.php');
     }
     
+    public function viewUser(){
+        
+    }
+
+
     public function editUser(){
         
     }
