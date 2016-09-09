@@ -57,6 +57,15 @@ class User {
         header('location: index.php');
     }
     
+    public function isLoginUser() {
+
+        if ($_SESSION['login']) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+    
     public function editUser($id){
         $db = new DB();
         
@@ -66,15 +75,6 @@ class User {
         
         return $result;
         
-    }
-
-    public function isLoginUser() {
-
-        if ($_SESSION['login']) {
-            return TRUE;
-        } else {
-            return FALSE;
-        }
     }
 
 }

@@ -2,7 +2,7 @@
     include './includes.php';
     
     if(isset($_POST['save'])){
-        User::addCustomer();
+        Customer::addCustomer();
     }
 ?>
 
