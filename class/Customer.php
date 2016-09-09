@@ -49,4 +49,15 @@ class Customer {
         return $result;
     }
     
+    public function deleteCustomer($id){
+        
+        $db = new DB();
+        
+        $sql = "DELETE * FROM `customer` WHERE `id` = $id " ;
+        
+        $result = $db->readQuery($sql);
+        
+        return $result;
+    }
+    
 }
