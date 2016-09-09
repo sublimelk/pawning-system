@@ -15,6 +15,7 @@ if (!User::isLoginUser()) {
         <title>Dashbord</title>
     </head>
     <body>
+        <?php include './navigation.php'; ?>
         <?php ?>
     </body>
 </html>
