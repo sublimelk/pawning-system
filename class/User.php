@@ -45,5 +45,15 @@ class User {
             return FALSE;
         }
     }
+    
+    
+    
+    public function logoutUser(){
+        
+        unset($_SESSION['login']);
+        unset($_SESSION['name']);
+        
+        header('location: index.php');
+    }
 
 }
