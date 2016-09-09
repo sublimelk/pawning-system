@@ -6,12 +6,14 @@ class User {
     private $username;
     private $password;
 
-    public function setUser($data) {
-        
+    public function setUser($name, $username, $password) {
+        $this->name = $name;
+        $this->username = $username;
+        $this->password = $password;
     }
 
-    public function getUser($id) {
-        
+    public function getUser() {
+        return $this-> User;
     }
 
     public function loginUser($data) {
@@ -43,6 +45,10 @@ class User {
         unset($_SESSION['name']);
 
         header('location: index.php');
+    }
+    
+    public function editUser(){
+        
     }
 
     public function isLoginUser() {
