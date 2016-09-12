@@ -1,14 +1,20 @@
 <?php
 include './includes.php';
+include './navigation.php';
+
+$invoice = SystemData::getInvoiceId();
 
 if(isset($_POST['save'])){ 
-    SystemData::addPawning($_POST);
     
- 
+    SystemData::addPawning($_POST);
     
 }
 ?>
 <form method="post">
+    <label>Invoice Number :</label>
+    <input type="text" name="invoice" value="<?php echo $invoice['INVOICE']; ?>"/> <br>
+    <label>Date :</label>
+    <input type="text" name="date"/> <br>
     <label>Customer Name :</label>
     <select name="cus_name">
         <option value=""> --- Please Select --- </option>
@@ -47,6 +53,10 @@ if(isset($_POST['save'])){
     </select> <br>
     <label>Weight(g) :</label>
     <input type="text" name="weight" placeholder="weight(g)"/> <br>
+    <label>Interest :</label>
+    <input type="text" name="interest"/> <br>
+    <label>Amount :</label>
+    <input type="text" name="amount"/> <br>
     <input type="submit" name="save" value="Add"/>
     
 </form>

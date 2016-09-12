@@ -1,5 +1,6 @@
 <?php
 include './includes.php';
+include './navigation.php';
 
 $id = $_GET['id'];
 $customer = Customer::getCustomersById($id);

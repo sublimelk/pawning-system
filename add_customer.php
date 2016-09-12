@@ -1,5 +1,6 @@
 <?php
 include './includes.php';
+include './navigation.php';
 
 if (isset($_POST['save'])) {
     Customer::addCustomer($_POST);
