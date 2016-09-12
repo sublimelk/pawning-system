@@ -17,20 +17,9 @@ if (isset($_POST['save'])) {
     <input type="text" name="phone" placeholder="phone"/> <br>
     <label>Feedback :</label>
     <input type="text" name="feedback" placeholder="fedback"/> <br>
-
+    
     <input type="submit" name="save" value="Submit"/>
 
-    <select>
-        <option value=""> --- Please Select --- </option>
-        <?php
-        foreach (SystemData::getItemTypes() as $key => $type) {
-             
-            ?>
 
-        <option value="<?php echo $key; ?>"> <?php echo $type; ?></option>
-            <?php
-        }
-        ?>
-    </select>
 </form>
 
