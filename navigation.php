@@ -18,7 +18,7 @@ $customer = Customer::getCustomers();
         <a>Pawning</a>
         <ul> 
             <li>
-                <a href="add_pawning.php">Add New</a>
+                <a href="add_new_pawning.php">Add New</a>
             </li>
             <li>
                 <a href="view_pawning.php">View</a>

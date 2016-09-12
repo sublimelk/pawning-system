@@ -1,9 +1,16 @@
 <?php
-
 include './includes.php';
+
+if(isset($_POST['save'])){ 
+    SystemData::addPawning($_POST);
+    
+ 
+    
+}
 ?>
+<form method="post">
     <label>Customer Name :</label>
-    <select>
+    <select name="cus_name">
         <option value=""> --- Please Select --- </option>
         <?php
         foreach (SystemData::getCustomers() as $name) {
@@ -15,7 +22,7 @@ include './includes.php';
         ?>
     </select> <br>
     <label>Item Type :</label>
-    <select>
+    <select name="item_type">
         <option value=""> --- Please Select --- </option>
         <?php
         foreach (SystemData::getItemTypes() as $key => $type) {
@@ -27,13 +34,13 @@ include './includes.php';
         ?>
     </select> <br>
     <label>Carat Size :</label>
-    <select>
+    <select name="car_size">
         <option value=""> --- Please Select --- </option>
         <?php
-        foreach (SystemData::getCaratSize() as $key => $type) {
+        foreach (SystemData::getCaratSize() as $key => $size) {
             ?>
 
-            <option value="<?php echo $key; ?>"> <?php echo $type; ?></option>
+            <option value="<?php echo $key; ?>"> <?php echo $size; ?></option>
             <?php
         }
         ?>
@@ -42,4 +49,4 @@ include './includes.php';
     <input type="text" name="weight" placeholder="weight(g)"/> <br>
     <input type="submit" name="save" value="Add"/>
     
-
+</form>

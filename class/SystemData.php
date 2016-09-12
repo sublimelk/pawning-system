@@ -40,5 +40,17 @@ class SystemData {
         }
         return $array_res;
     }
+    
+    public function addPawning(){
+        
+        $db = new DB();
+        
+        $sql = "INSERT INTO `pawning` (`cus_name`,`item_type`,`car_size`,`weight`) VALUES ('".$_POST['cus_name']."','".$_POST['item_type']."','".$_POST['car_size']."','".$_POST['weight']."')";
+        
+        $result=$db->readQuery($sql);
+        
+        return $result;
+        
+    }
 
 }
