@@ -8,18 +8,18 @@ class Customer {
     public $phone;
     public $value;
 
-    public function setCustomer($name, $address, $id_num, $phone, $value) {
+    public function setCustomer($name, $address, $nic, $phone, $feedback) {
         $this->name = $name;
         $this->username = $address;
-        $this->password = $id_num;
+        $this->password = $nic;
         $this->password = $phone;
-        $this->password = $value;
+        $this->password = $feedback;
     }
 
     public function getCustomers() {
         $db = new DB();
 
-        $sql = "SELECT * FROM customer ";
+        $sql = "SELECT * FROM customer WHERE `is_active` = '1'";
 
         $result = $db->readQuery($sql);
 
@@ -56,7 +56,7 @@ class Customer {
 
         $db = new DB();
 
-        $sql = "INSERT INTO `customer` (`name`,`id_num`,`address`,`phone`,`value`) VALUES ('" . $_POST['name'] . "','" . $_POST['id_num'] . "','" . $_POST['address'] . "','" . $_POST['phone'] . "','" . $_POST['value'] . "')";
+        $sql = "INSERT INTO `customer` (`name`,`nic`,`address`,`phone`,`feedback`) VALUES ('" . $_POST['name'] . "','" . $_POST['nic'] . "','" . $_POST['address'] . "','" . $_POST['phone'] . "','" . $_POST['feedback'] . "')";
 
         $result = $db->readQuery($sql);
 
@@ -66,7 +66,7 @@ class Customer {
     public function editCustomer($id) {
         $db = new DB();
 
-        $sql = "UPDATE `customer` SET `name` = '" . $_POST['name'] . "', `id_num` = '" . $_POST['id_num'] . "', `address` = '" . $_POST['address'] . "' , `phone` = '" . $_POST['phone'] . "' , `value` = '" . $_POST['value'] . "' WHERE id = $id ";
+        $sql = "UPDATE `customer` SET `name` = '" . $_POST['name'] . "', `nic` = '" . $_POST['nic'] . "', `address` = '" . $_POST['address'] . "' , `phone` = '" . $_POST['phone'] . "' , `feedback` = '" . $_POST['feedback'] . "' WHERE id = $id ";
 
         $result = $db->readQuery($sql);
 
@@ -74,8 +74,11 @@ class Customer {
     }
 
     public function deleteCustomer($id) {
+        $db = new DB();
 
-        $sql = "DELETE FROM `customer` WHERE `id` = $id ";
+        $sql = "UPDATE `customer` SET `is_active` = '0' WHERE `id` = $id ";
+        
+        $result = $db->readQuery($sql);
 
         return $result;
     }
