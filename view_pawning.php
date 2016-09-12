@@ -1,5 +1,6 @@
 <?php
     include './includes.php';
+    include './navigation.php';
     
   $details = SystemData::getPawning();
 ?>
