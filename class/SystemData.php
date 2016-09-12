@@ -52,5 +52,51 @@ class SystemData {
         return $result;
         
     }
+    
+    public function getPawning(){
+        
+        $db = new DB();
+        
+        $sql = "SELECT * FROM `pawning` ";
+        
+        $result = $db->readQuery($sql);
+        
+        $array_res = array();
+        
+        while ($row =  mysql_fetch_array($result)){
+            $pawning = array(
+                'id' => $row['id'],
+                'cus_name' => $row['cus_name'],
+                'item_type' => $row['item_type'],
+                'car_size' => $row['car_size'],
+                'weight' => $row['weight'],
+            );
+            
+            array_push($array_res, $pawning);
+        }
+        
+        return $array_res;
+    }
+    
+    public function getPawningById($id) {
+        $query = "SELECT * FROM `pawning` WHERE `id` = '$id' LIMIT 1";
+
+        $db = new DB();
+        $result = $db->readQuery($query);
+
+        $row = mysql_fetch_assoc($result);
+
+        return $row;
+    }
+    
+    public function editPawning($id){
+        $db = new DB();
+
+        $sql = "UPDATE `pawning` SET `cus_name` = '" . $_POST['cus_name'] . "', `item_type` = '" . $_POST['item_type'] . "', `car_size` = '" . $_POST['car_size'] . "' , `weight` = '" . $_POST['weight'] . "' WHERE id = $id ";
+
+        $result = $db->readQuery($sql);
+
+        return $result;
+    }
 
 }
