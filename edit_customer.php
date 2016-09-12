@@ -2,7 +2,7 @@
 include './includes.php';
 
 $id = $_GET['id'];
-$customer = Customer::getCustomers();
+$customer = Customer::getCustomersById($id);
 
 if (isset($_POST['update'])) {
     
