@@ -45,7 +45,7 @@ class SystemData {
         
         $db = new DB();
         
-        $sql = "INSERT INTO `pawning` (`cus_name`,`item_type`,`car_size`,`weight`) VALUES ('".$_POST['cus_name']."','".$_POST['item_type']."','".$_POST['car_size']."','".$_POST['weight']."')";
+        $sql = "INSERT INTO `pawning` (`date`,`cus_name`,`item_type`,`car_size`,`weight`,`interest`,`amount`) VALUES ('".$_POST['date']."','".$_POST['cus_name']."','".$_POST['item_type']."','".$_POST['car_size']."','".$_POST['weight']."','".$_POST['interest']."','".$_POST['amount']."')";
         
         $result=$db->readQuery($sql);
         
@@ -92,10 +92,21 @@ class SystemData {
     public function editPawning($id){
         $db = new DB();
 
-        $sql = "UPDATE `pawning` SET `cus_name` = '" . $_POST['cus_name'] . "', `item_type` = '" . $_POST['item_type'] . "', `car_size` = '" . $_POST['car_size'] . "' , `weight` = '" . $_POST['weight'] . "' WHERE id = $id ";
+        $sql = "UPDATE `pawning` SET `date` = '" . $_POST['date'] . "', `cus_name` = '" . $_POST['cus_name'] . "', `item_type` = '" . $_POST['item_type'] . "', `car_size` = '" . $_POST['car_size'] . "' , `weight` = '" . $_POST['weight'] . "' , `interest` = '" . $_POST['interest'] . "' , `amount` = '" . $_POST['amount'] . "' WHERE id = $id ";
 
         $result = $db->readQuery($sql);
 
+        return $result;
+    }
+    
+    public function getInvoiceId(){
+        
+        $db = new DB();
+        
+        $sql = "SELECT MAX(id) AS INVOICE FROM pawning ";
+        
+        $result = $db->readQuery($sql);
+        
         return $result;
     }
 
