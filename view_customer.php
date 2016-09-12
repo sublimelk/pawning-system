@@ -18,10 +18,16 @@ th, td {
     <th>Edit</th>
     <th>Delete</th>
     </tr>
+    <?php
+    foreach ($customers as $customer){
+    ?>
     <tr>
-        <td><?php echo $customers['name']; ?></td>
-        <td><a href="edit_customer.php?id=<?php echo $customers['id']; ?>">Edit</a></td>
-        <td><a href="delete_customer.php?id=<?php echo $customers['id']; ?>">Delete</a></td>
+        <td><?php echo $customer['name']; ?></td>
+        <td><a href="edit_customer.php?id=<?php echo $customer['id']; ?>">Edit</a></td>
+        <td><a href="delete_customer.php?id=<?php echo $customer['id']; ?>">Delete</a></td>
+        <?php 
+    }
+        ?>
     </tr>
 </table>
 
