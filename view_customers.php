@@ -1,5 +1,6 @@
 <?php
     include './includes.php';
+    include './navigation.php'; 
     
    $customers = Customer::getCustomers();
 ?>
