@@ -22,17 +22,22 @@ $interest = SystemData::getInterest();
     <label>Date :</label>
     <input type="text" name="date" value="<?php echo $detail['date']; ?>"/> <br>
     <label>Customer Name :</label>
-    <select name="cus_name">
-        <option value=""><?php echo $detail['cus_name']; ?></option>
+    <select name="customer"> 
         <?php
-        foreach (Customer::getCustomers() as $name) {
+        foreach (Customer::getCustomers() as $customer) {
+            if($customer['id'] == $detail['customer']){
             ?>
-
-            <option value="<?php echo $name['name']; ?>"> <?php echo $name['name']; ?></option>
+        }else{
+        ?>
+        
+            <option value="<?php echo $customer['id']; ?>" > <?php echo $customer['name']; ?></option>
             <?php
+            }
         }
         ?>
+
     </select> <br>
+
     <label>Item Type :</label>
     <select name="item_type"> 
         <?php
@@ -44,18 +49,18 @@ $interest = SystemData::getInterest();
                 <?php
             } else {
                 ?>
-
                 <option value="<?php echo $key; ?>"> <?php echo $type; ?></option>
                 <?php
             }
         }
         ?>
     </select> <br>
+
     <label>Carat Size :</label>
     <select name="car_size">
         <?php
         foreach (SystemData::getCaratSize() as $key => $size) {
-            
+
             if ($key == $detail['car_size']) {
                 ?>
                 <option value="<?php echo $key; ?>" selected=""> <?php echo $size; ?></option>
