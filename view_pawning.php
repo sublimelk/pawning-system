@@ -3,6 +3,7 @@
     include './navigation.php';
     
   $details = Pawning::getPawning();
+  
 ?>
 <style>
 table, th, td {
@@ -21,10 +22,10 @@ th, td {
     <th>Edit</th>
     </tr>
     <?php
-    foreach ($details as $detail){
+    foreach ($details as $detail ){
     ?>
     <tr>
-        <td><?php echo $detail['cus_name']; ?></td>
+        <td><?php echo Customer::getCustomersById($detail['customer'])["name"]; ?></td>
         <td><?php echo $detail['date']; ?></td>
         <td><?php echo $detail['amount']; ?></td>
         <td><a href="edit_pawning.php?id=<?php echo $detail['id']; ?>">Edit</a></td>
