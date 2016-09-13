@@ -4,10 +4,6 @@ include './navigation.php';
 
 $invoice_id = SystemData::getInvoiceId();
 
-$new_invoice = ++$invoice_id;
-
-$new_invoice_id = sprintf("%07s", $invoice_id);
-
 $interest = SystemData::getInterest();
 
 if(isset($_POST['save'])){ 
@@ -18,7 +14,7 @@ if(isset($_POST['save'])){
 ?>
 <form method="post">
     <label>Invoice Number :</label>
-    <input type="text" name="invoice" value="<?php echo $new_invoice_id ?>"/> <br>
+    <input type="text" name="invoice" value="<?php echo $invoice_id ?>"/> <br>
     <label>Date :</label>
     <input type="text" name="date"/> <br>
     <label>Customer Name :</label>
@@ -59,8 +55,8 @@ if(isset($_POST['save'])){
     </select> <br>
     <label>Weight(g) :</label>
     <input type="text" name="weight" placeholder="weight(g)"/> <br>
-    <label>Interest :</label>
-    <input type="text" name="interest" value="<?php echo $interest?>%"/> <br>
+    <label>Interest(%) :</label>
+    <input type="text" name="interest" value="<?php echo $interest?>"/> <br>
     <label>Amount :</label>
     <input type="text" name="amount"/> <br>
     <input type="submit" name="save" value="Add"/>

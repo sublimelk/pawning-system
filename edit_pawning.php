@@ -6,6 +6,10 @@ $id = $_GET['id'];
 
 $detail = SystemData::getPawningById($id);
 
+$invoice_id = SystemData::viewInvoiceId($id);
+
+$interest = SystemData::getInterest();
+
 if (isset($_POST['save'])) {
 
     $a = SystemData::editPawning($id);
@@ -14,7 +18,7 @@ if (isset($_POST['save'])) {
 
 <form method="post">
     <label>Invoice Number :</label>
-    <input type="text" name="invoice" value="<?php echo $detail['cus_name']; ?>"/> <br>
+    <input type="text" name="invoice" value="<?php echo $invoice_id ?>"/> <br>
     <label>Date :</label>
     <input type="text" name="date" value="<?php echo $detail['cus_name']; ?>"/> <br>
     <label>Customer Name :</label>
@@ -34,7 +38,7 @@ if (isset($_POST['save'])) {
         <?php
         foreach (SystemData::getItemTypes() as $key => $type) {
 
-            if ($key = $detail['item_type']) {
+            if ($key == $detail['item_type']) {
                 ?> 
                 <option value="<?php echo $key; ?>" selected=""> <?php echo $type; ?></option>
                 <?php
@@ -52,7 +56,7 @@ if (isset($_POST['save'])) {
         <?php
         foreach (SystemData::getCaratSize() as $key => $size) {
             
-            if ($key = $detail['car_size']) {
+            if ($key == $detail['car_size']) {
                 ?>
                 <option value="<?php echo $key; ?>" selected=""> <?php echo $size; ?></option>
                 <?php
@@ -67,9 +71,9 @@ if (isset($_POST['save'])) {
     <label>Weight(g) :</label>
     <input type="text" name="weight" placeholder="weight(g)" value="<?php echo $detail['weight']; ?>"/> <br>
     <label>Interest :</label>
-    <input type="text" name="interest" value="<?php echo $detail['weight']; ?>"/> <br>
+    <input type="text" name="interest" value="<?php echo $detail['interest']; ?>"/> <br>
     <label>Amount :</label>
-    <input type="text" name="amount" value="<?php echo $detail['weight']; ?>"/> <br>
+    <input type="text" name="amount" value="<?php echo $detail['amount']; ?>"/> <br>
     <input type="submit" name="save" value="Update"/>
 </form>
 

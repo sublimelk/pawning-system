@@ -73,14 +73,15 @@ class SystemData {
 
             array_push($array_res, $pawning);
         }
-
         return $array_res;
     }
 
     public function getPawningById($id) {
+        
+        $db = new DB();
+        
         $query = "SELECT * FROM `pawning` WHERE `id` = '$id' LIMIT 1";
 
-        $db = new DB();
         $result = $db->readQuery($query);
 
         $row = mysql_fetch_assoc($result);
@@ -91,7 +92,7 @@ class SystemData {
     public function editPawning($id) {
         $db = new DB();
 
-        $sql = "UPDATE `pawning` SET `date` = '" . $_POST['date'] . "', `cus_name` = '" . $_POST['cus_name'] . "', `item_type` = '" . $_POST['item_type'] . "', `car_size` = '" . $_POST['car_size'] . "' , `weight` = '" . $_POST['weight'] . "' , `interest` = '" . $_POST['interest'] . "' , `amount` = '" . $_POST['amount'] . "' WHERE id = $id ";
+        $sql = "UPDATE `pawning` SET `date` = '" . $_POST['date'] . "', `cus_name` = '" . $_POST['cus_name'] . "', `item_type` = '" . $_POST['item_type'] . "', `car_size` = '" . $_POST['car_size'] . "' , `weight` = '" . $_POST['weight'] . "' , `amount` = '" . $_POST['amount'] . "' WHERE id = $id ";
 
         $result = $db->readQuery($sql);
 
@@ -105,17 +106,28 @@ class SystemData {
         $sql = "SELECT MAX(id) FROM pawning ";
 
         $result = $db->readQuery($sql);
-        
+
         $row = mysql_fetch_assoc($result);
-     
-        return $row["MAX(id)"] ;
+
+        $new_invoice = ++$row["MAX(id)"];
+
+        $new_invoice_id = sprintf("%07s", $new_invoice);
+
+        return $new_invoice_id;
+    }
+
+    public function getInterest() {
+
+        $interest = 5;
+
+        return $interest;
     }
     
-    public function getInterest(){
+    public function viewInvoiceId($id){
         
-        $interest = 5;
+        $invoice_id = sprintf("%07s", $id);
         
-        return $interest;
+        return $invoice_id;
     }
 
 }
