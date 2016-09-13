@@ -4,6 +4,9 @@ include './navigation.php';
 
 $invoice = SystemData::getInvoiceId();
 
+$new = sprintf("%06s", $invoice);
+
+
 if(isset($_POST['save'])){ 
     
     SystemData::addPawning($_POST);
@@ -12,7 +15,7 @@ if(isset($_POST['save'])){
 ?>
 <form method="post">
     <label>Invoice Number :</label>
-    <input type="text" name="invoice" value="<?php echo $invoice['INVOICE']; ?>"/> <br>
+    <input type="text" name="invoice" value="<?php echo $new ?>"/> <br>
     <label>Date :</label>
     <input type="text" name="date"/> <br>
     <label>Customer Name :</label>
