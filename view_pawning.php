@@ -2,7 +2,7 @@
     include './includes.php';
     include './navigation.php';
     
-  $details = SystemData::getPawning();
+  $details = Pawning::getPawning();
 ?>
 <style>
 table, th, td {
@@ -16,16 +16,18 @@ th, td {
 <table>
     <tr>
     <th>Name</th>
+    <th>Date</th>
+    <th>Amount</th>
     <th>Edit</th>
-    <th>Delete</th>
     </tr>
     <?php
     foreach ($details as $detail){
     ?>
     <tr>
         <td><?php echo $detail['cus_name']; ?></td>
+        <td><?php echo $detail['date']; ?></td>
+        <td><?php echo $detail['amount']; ?></td>
         <td><a href="edit_pawning.php?id=<?php echo $detail['id']; ?>">Edit</a></td>
-        <td><a href="delete_pawning.php?id=<?php echo $detail['id']; ?>">Delete</a></td>
         <?php 
     }
         ?>
