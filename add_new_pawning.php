@@ -2,15 +2,16 @@
 include './includes.php';
 include './navigation.php';
 
-$invoice_id = SystemData::getInvoiceId();
-
-$interest = SystemData::getInterest();
 
 if(isset($_POST['save'])){ 
     
-    SystemData::addPawning($_POST);
+    Pawning::addPawning($_POST);
     
 }
+
+$invoice_id = SystemData::getInvoiceId();
+
+$interest = SystemData::getInterest();
 ?>
 <form method="post">
     <label>Invoice Number :</label>
@@ -21,7 +22,7 @@ if(isset($_POST['save'])){
     <select name="cus_name">
         <option value=""> --- Please Select --- </option>
         <?php
-        foreach (SystemData::getCustomers() as $name) {
+        foreach (Customer::getCustomers() as $name) {
             ?>
 
             <option value="<?php echo $name['name']; ?>"> <?php echo $name['name']; ?></option>
