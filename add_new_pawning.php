@@ -19,13 +19,13 @@ $interest = SystemData::getInterest();
     <label>Date :</label>
     <input type="text" name="date"/> <br>
     <label>Customer Name :</label>
-    <select name="cus_name">
+    <select name="customer">
         <option value=""> --- Please Select --- </option>
         <?php
-        foreach (Customer::getCustomers() as $name) {
+        foreach (Customer::getCustomers() as $customer) {
             ?>
 
-            <option value="<?php echo $name['name']; ?>"> <?php echo $name['name']; ?></option>
+            <option value="<?php echo $customer['id']; ?>"> <?php echo $customer['name']; ?></option>
             <?php
         }
         ?>
