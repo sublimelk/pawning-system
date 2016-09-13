@@ -4,28 +4,28 @@ include './navigation.php';
 
 $id = $_GET['id'];
 
-$detail = SystemData::getPawningById($id);
+if (isset($_POST['save'])) {
+
+    $a = Pawning::editPawning($id);
+}
+
+$detail = Pawning::getPawningById($id);
 
 $invoice_id = SystemData::viewInvoiceId($id);
 
 $interest = SystemData::getInterest();
-
-if (isset($_POST['save'])) {
-
-    $a = SystemData::editPawning($id);
-}
 ?>
 
 <form method="post">
     <label>Invoice Number :</label>
     <input type="text" name="invoice" value="<?php echo $invoice_id ?>"/> <br>
     <label>Date :</label>
-    <input type="text" name="date" value="<?php echo $detail['cus_name']; ?>"/> <br>
+    <input type="text" name="date" value="<?php echo $detail['date']; ?>"/> <br>
     <label>Customer Name :</label>
     <select name="cus_name">
         <option value=""><?php echo $detail['cus_name']; ?></option>
         <?php
-        foreach (SystemData::getCustomers() as $name) {
+        foreach (Customer::getCustomers() as $name) {
             ?>
 
             <option value="<?php echo $name['name']; ?>"> <?php echo $name['name']; ?></option>
