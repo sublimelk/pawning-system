@@ -110,5 +110,12 @@ class SystemData {
      
         return $row["MAX(id)"] ;
     }
+    
+    public function getInterest(){
+        
+        $interest = 5;
+        
+        return $interest;
+    }
 
 }
