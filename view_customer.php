@@ -6,7 +6,7 @@ $id = $_GET['id'];
 $customers = Customer::getCustomersById($id);
 
 $pawnings = Pawning::getPawningByCustomer($id);
-
+        
 ?>
 <html>
     <head>
@@ -39,22 +39,22 @@ $pawnings = Pawning::getPawningByCustomer($id);
                 <th>Interest</th>
                 <th>Amount</th>
             </tr>
-            
-            <?php 
-            foreach ($pawnings as $pawning){
-            ?>
+
+            <?php
+            foreach ($pawnings as $pawning) {
+                ?>
                 <tr>
                     <td><?php echo $pawning['date']; ?></td>
-                    <td><?php echo $pawning['item_type']; ?></td>
-                    <td><?php echo $pawning['car_size']; ?></td>
+                    <td><?php echo SystemData::getItemTypes()[$pawning['item_type']]; ?></td>
+                    <td><?php echo SystemData::getCaratSize()[$pawning['car_size']]; ?></td>
                     <td><?php echo $pawning['weight']; ?></td>
-                    <td><?php echo $pawning['interest']; ?></td>
-                    <td><?php echo $pawning['amount']; ?></td>
+                    <td><?php echo $pawning['interest'] . '%'; ?></td>
+                    <td><?php echo number_format($pawning['amount'], 2) . "<br>"; ?></td>
 
                 </tr>
-                <?php
-            }
-                ?>
+    <?php
+}
+?>
         </table>
 
     </body>
