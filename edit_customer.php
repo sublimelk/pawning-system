@@ -11,7 +11,7 @@ if (isset($_POST['update'])) {
     
     $customerId = $_GET['id'];
     
-    Customer::editPhoto($customerId, $_FILES);
+    Customer::setPhoto($customerId, $_FILES);
     
 }
 ?>
