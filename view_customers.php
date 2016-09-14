@@ -16,6 +16,7 @@ th, td {
 <table>
     <tr>
     <th>Name</th>
+    <th>View</th>
     <th>Edit</th>
     <th>Delete</th>
     </tr>
@@ -24,6 +25,7 @@ th, td {
     ?>
     <tr>
         <td><?php echo $customer['name']; ?></td>
+        <td><a href="view_customer.php?id=<?php echo $customer['id']; ?>">View</a></td>
         <td><a href="edit_customer.php?id=<?php echo $customer['id']; ?>">Edit</a></td>
         <td><a href="delete_customer.php?id=<?php echo $customer['id']; ?>">Delete</a></td>
         <?php 
