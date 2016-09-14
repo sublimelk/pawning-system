@@ -8,6 +8,7 @@ if (isset($_POST['save'])) {
     $customerId = mysql_insert_id();
 
     Customer::setPhoto($customerId, $_FILES);
+    
 }
 ?>
 

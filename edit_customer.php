@@ -7,7 +7,7 @@ $customer = Customer::getCustomersById($id);
 
 if (isset($_POST['update'])) {
     
-    Customer::editCustomer($id);
+    $a = Customer::editCustomer($id);
     
     $customerId = $_GET['id'];
     

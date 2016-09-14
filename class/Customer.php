@@ -84,7 +84,7 @@ class Customer {
     }
 
     public function setPhoto($customerId, $file) {
-
+        
         $target_dir = "img/customers/";
 
         $ext = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
@@ -124,7 +124,7 @@ class Customer {
 
                 $db = new DB();
 
-                $sql = "UPDATE `customer` SET `img_type` = '" . $ext . "' WHERE id = '" . $customerId . "' ";
+                $sql = "UPDATE `customer` SET `img_type` = '" . $ext . "' WHERE `id` = '" . $customerId . "' ";
 
                 $db->readQuery($sql);
 
