@@ -5,7 +5,7 @@ $id = $_GET['id'];
 
 $customers = Customer::getCustomersById($id);
 
-$pawnings = Pawning::getPawningByCustomer($id);
+$pawnings = Pawning::getPawningByCustomerId($id);
         
 ?>
 <html>

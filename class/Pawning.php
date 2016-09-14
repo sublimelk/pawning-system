@@ -1,6 +1,7 @@
 <?php
 
 class Pawning {
+
     public function addPawning() {
 
         $db = new DB();
@@ -53,7 +54,7 @@ class Pawning {
 
         $db = new DB();
 
-        $query = "SELECT * FROM `pawning` WHERE `id` = '$id' LIMIT 1";
+        $query = "SELECT * FROM `pawning` WHERE `id` = '" . $id . "' LIMIT 1";
 
         $result = $db->readQuery($query);
 
@@ -61,4 +62,32 @@ class Pawning {
 
         return $row;
     }
+
+    public function getPawningByCustomerID($id) {
+
+        $db = new DB();
+
+        $query = "SELECT * FROM `pawning` WHERE `customer` = '" . $id . "' ";
+
+        $result = $db->readQuery($query);
+
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            $pawning = array(
+                'id' => $row['id'],
+                'date' => $row['date'],
+                'customer' => $row['customer'],
+                'item_type' => $row['item_type'],
+                'car_size' => $row['car_size'],
+                'weight' => $row['weight'],
+                'interest' => $row['interest'],
+                'amount' => $row['amount'],
+            );
+
+            array_push($array_res, $pawning);
+        }
+        return $array_res;
+    }
+
 }
