@@ -14,9 +14,17 @@ if (isset($_POST['btnsubmit'])) {
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/navbar.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="css/color-theme.css" />
+
+        <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
+        <script src="js/togelmenu.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
+            <?php include './navigation.php';  ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Change Administrator Details</h3>

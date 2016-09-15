@@ -19,18 +19,14 @@ $customers = Customer::getCustomers();
     </head>
     <body>
         <div class="container-fluid"> 
-
-
-
             <?php include './navigation.php'; ?>
-
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">View Customers</h3>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive"> 
-                        <table class="table table-striped table-hover" id="myTable">
+                        <table class="table table-striped" id="myTable">
                             <thead>
                                 <tr>
                                     <th>Name</th>

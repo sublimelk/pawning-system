@@ -1,5 +1,4 @@
 <?php
-
 include './includes.php';
 
 if (!User::isLoginUser()) {
@@ -14,10 +13,17 @@ if (!User::isLoginUser()) {
     <head>
         <meta charset="UTF-8">
         <title>Dashbord</title>
-        <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
-        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/navbar.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="css/color-theme.css" />
+
+        <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
+        <script src="js/togelmenu.js" type="text/javascript"></script>
     </head>
     <body>
-        <?php include './navigation.php'; ?>
+        <div class="container-fluid">
+            <?php include './navigation.php'; ?>
+        </div>
     </body>
 </html>

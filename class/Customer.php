@@ -47,7 +47,7 @@ class Customer {
         $db = new DB();
         $result = $db->readQuery($query);
 
-        $row = mysql_fetch_assoc($result);
+        $row = mysql_fetch_array($result);
 
         return $row;
     }

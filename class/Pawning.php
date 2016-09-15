@@ -89,5 +89,15 @@ class Pawning {
         }
         return $array_res;
     }
+    
+    public function isReleasing($id) {
+        $db = new DB();
+
+        $sql = "UPDATE `pawning` SET `isRelease` = '1' WHERE `id` = $id ";
+
+        $result = $db->readQuery($sql);
+
+        return $result;
+    }
 
 }

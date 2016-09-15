@@ -1,6 +1,5 @@
 <?php
 include './includes.php';
-include './navigation.php';
 
 if (isset($_POST['save'])) {
     Customer::addCustomer($_POST);
@@ -22,7 +21,8 @@ if (isset($_POST['save'])) {
         <script src="js/togelmenu.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="container">
+        <div class="container-fluid">
+            <?php include './navigation.php';  ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Add New Customer</h3>

@@ -7,3 +7,5 @@ include './class/Customer.php';
 include './class/SystemData.php';
 include '/class/Pawning.php';
 include './class/ImageResizer.php';
+include './class/Releasing.php';
+
