@@ -8,26 +8,84 @@ if (isset($_POST['save'])) {
     $customerId = mysql_insert_id();
 
     Customer::setPhoto($customerId, $_FILES);
-    
 }
 ?>
+<html>
+    <head>
+        <title></title>
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="css/navbar.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" media="all" href="css/color-theme.css" />
 
-<form method="post"  enctype="multipart/form-data">
-    <label>Name :</label>
-    <input type="text" name="name" placeholder="Name"/> <br> 
-    <label>Photo :</label> 
-    <input type="file" name="fileToUpload" id="fileToUpload"><br> 
-    <label>NIC Number :</label>
-    <input type="text" name="nic" placeholder="ID"/> <br>
-    <label>Address :</label>
-    <input type="text" name="address" placeholder="Address"/> <br>
-    <label>Phone :</label>
-    <input type="text" name="phone" placeholder="phone"/> <br>
-    <label>Feedback :</label>
-    <input type="text" name="feedback" placeholder="fedback"/> <br>
+        <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
+        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
+        <script src="js/togelmenu.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Add New Customer</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
 
-    <input type="submit" name="save" value="Submit"/>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-3 control-label">Name</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="NAME" required="TRUE"> 
+                                    </div>
+                                </div>
 
+                                <div class="form-group">
+                                    <label for="sortDescription" class="col-sm-3 control-label">Photo</label>
+                                    <div class="col-sm-9">
+                                        <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" required="TRUE"> 
+                                    </div>
+                                </div>
 
-</form>
+                                <div class="form-group">
+                                    <label for="image" class="col-sm-3 control-label">NIC Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="nic" id="nic" class="form-control" placeholder="NIC NUMBER" required="TRUE"/> 
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="seo" class="col-sm-3 control-label">Address</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="address" id="address" class="form-control" placeholder="ADDRESS" required="TRUE"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="seo" class="col-sm-3 control-label">Phone</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="phone" id="phone" class="form-control" placeholder="PHONE" required="TRUE"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="propertyKeyword" class="col-sm-3 control-label">Feedback</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="feedback" id="feedback" class="form-control" placeholder="FEEDBACK" required="TRUE">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9"> 
+                                        <input type="submit" class="btn btn-default" id="btn-submit" value="save" name="save">
+                                    </div>
+                                </div>
+
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
 
