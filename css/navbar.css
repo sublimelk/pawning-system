@@ -251,11 +251,9 @@
 
 	width:100%;
 
-	max-width:1280px;
-
 	background:#2b3a40;
-
-	margin:35px auto;
+        
+        margin-bottom: 50px;
 
 	padding:0px 0px;
 
@@ -1092,8 +1090,6 @@
 .wsmenu-submenu{
 
 	position:absolute;
-
-	top: 48px;
 
 	z-index:1000;
 
