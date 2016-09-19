@@ -21,15 +21,24 @@ $customer = Customer::getCustomers();
                 <li><a href="#" class="active menuhomeicon"><i class="fa fa-home"></i><span class="mobiletext">Home</span></a></li>
                 <li><a href="#"><i class="fa fa-align-justify"></i>Customers <span class="arrow"></span></a>
                     <ul class="wsmenu-submenu">
-                        <li><a href="add_customer.php"><i class="fa fa-angle-right"></i>Add New Customer </a></li>
-                        <li><a href="view_customers.php"><i class="fa fa-angle-right"></i>View Customer</a></li>
+                        <li><a href="add_customer.php"><i class="fa fa-angle-right"></i>Add New </a></li>
+                        <li><a href="view_customers.php"><i class="fa fa-angle-right"></i>View</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><i class="fa fa-list-alt"></i>Pawning <span class="arrow"></span></a>
                     <ul class="wsmenu-submenu">
-                        <li><a href="add_new_pawning.php"><i class="fa fa-angle-right"></i>Add New Pawning </a></li>
-                        <li><a href="view_pawning.php"><i class="fa fa-angle-right"></i>View pawning</a></li>
+                        <li><a href="add_new_pawning.php"><i class="fa fa-angle-right"></i>Add New </a></li>
+                        <li><a href="view_pawning.php"><i class="fa fa-angle-right"></i>View</a></li>
+                        <li><a href="view_released_pawning.php"><i class="fa fa-angle-right"></i>View Released</a></li>
                     </ul>
+                </li>
+                <li><a href="#"><i class="fa fa-list-alt"></i>Releasing <span class="arrow"></span></a>
+                    <ul class="wsmenu-submenu">
+                        <li><a href="add_new_release.php"><i class="fa fa-angle-right"></i>Add New </a></li>
+                        <li><a href="view_releasing.php"><i class="fa fa-angle-right"></i>View</a></li>
+                    </ul>
+                </li>
+                <li><a href="Report.php"><i class="fa fa-list-alt"></i>Report </a>
                 </li>
                 <li><a href="profile.php?id=<?php echo $user['id']; ?>"><i class="fa fa-list-alt"></i>Profile </a></li>
             </ul>
