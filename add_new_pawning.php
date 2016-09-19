@@ -61,7 +61,6 @@ $interest = SystemData::getInterest();
                                                 <i class="glyphicon glyphicon-calendar" ></i>
                                             </span>
                                         </div>
-
                                     </div>
                                 </div>
 
