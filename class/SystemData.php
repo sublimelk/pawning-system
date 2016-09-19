@@ -47,7 +47,7 @@ class SystemData {
 
     public function viewInvoiceId($id) {
 
-        $invoice_id = sprintf("%07s", $id);
+        $invoice_id = sprintf("%05s", $id);
 
         return $invoice_id;
     }
