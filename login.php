@@ -15,7 +15,8 @@ if (isset($_POST['btnLogin'])) {
         <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
         <link href="css/navbar.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" media="all" href="css/color-theme.css" />
-
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        
         <script src="js/jquery-1.11.0.min.js" type="text/javascript"></script>
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
         <script src="js/togelmenu.js" type="text/javascript"></script>
@@ -27,7 +28,7 @@ if (isset($_POST['btnLogin'])) {
                     <div class="panel panel-default">
                         <div class="panel-heading">                                
                             <div class="row-fluid user-row">
-                                <img src="images/logo.jpg" class="img-responsive" alt="Pawning System Admin"/>
+                                <img src="" class="img-responsive" alt="Pawning System Admin"/>
                             </div>
                         </div>
                         <div class="panel-body">
