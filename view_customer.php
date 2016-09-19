@@ -24,7 +24,7 @@ $pawnings = Pawning::getPawningByCustomerId($id);
             <?php include './navigation.php'; ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Add New Customer</h3>
+                    <h3 class="panel-title">View Customer</h3>
                 </div>
                 <div class="panel-body">
                     <div class="panel panel-default">
