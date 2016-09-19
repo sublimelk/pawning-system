@@ -17,7 +17,34 @@ class Pawning {
 
         $db = new DB();
 
-        $sql = "SELECT * FROM `pawning` ";
+        $sql = "SELECT * FROM `pawning` WHERE `isRelease` IS NULL ";
+
+        $result = $db->readQuery($sql);
+
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+            $pawning = array(
+                'id' => $row['id'],
+                'date' => $row['date'],
+                'customer' => $row['customer'],
+                'item_type' => $row['item_type'],
+                'car_size' => $row['car_size'],
+                'weight' => $row['weight'],
+                'interest' => $row['interest'],
+                'amount' => $row['amount'],
+            );
+
+            array_push($array_res, $pawning);
+        }
+        return $array_res;
+    }
+    
+    public function getReleasedPawning() {
+
+        $db = new DB();
+
+        $sql = "SELECT * FROM `pawning` WHERE `isRelease` = 1 ";
 
         $result = $db->readQuery($sql);
 
