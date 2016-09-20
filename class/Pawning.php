@@ -39,7 +39,7 @@ class Pawning {
         }
         return $array_res;
     }
-    
+
     public function getReleasedPawning() {
 
         $db = new DB();
@@ -116,7 +116,7 @@ class Pawning {
         }
         return $array_res;
     }
-    
+
     public function isReleasing($id) {
         $db = new DB();
 
@@ -127,4 +127,5 @@ class Pawning {
         return $result;
     }
 
+    
 }

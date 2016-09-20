@@ -1,5 +1,21 @@
 <?php
 include './includes.php';
+
+$result = NULL;
+
+$dateFrom = NULL;
+$dateTo = NULL;
+$invoice = NULL;
+$nic = NULL;
+
+if (isset($_POST['search'])) {
+    $result = Report::getPawningReport($_POST);
+    
+    $dateFrom = $_POST['day_from'];
+    $dateTo = $_POST['day_to'];
+    $invoice = $_POST['invoice'];
+    $nic = $_POST['nic'];
+}
 ?>
 
 
@@ -33,13 +49,13 @@ include './includes.php';
                     <h3 class="panel-title">Report</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="table-responsive">
+                    <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="image" class="col-sm-3 control-label">Day From</label>
                                 <div class="col-sm-9">
                                     <div id="" class="datetimepicker1 input-append date"> 
-                                        <input data-format="yyyy-MM-dd" name="day_from" class="form-control date_picker" required="TRUE"/> 
+                                        <input data-format="yyyy-MM-dd" name="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>"/> 
                                         <span class="add-on">
                                             <i class="glyphicon glyphicon-calendar" ></i>
                                         </span>
@@ -53,7 +69,7 @@ include './includes.php';
                                 <label for="image" class="col-sm-3 control-label">Day To</label>
                                 <div class="col-sm-9">
                                     <div id="" class="datetimepicker1 input-append date"> 
-                                        <input data-format="yyyy-MM-dd" name="day_to" class="form-control date_picker" required="TRUE"/> 
+                                        <input data-format="yyyy-MM-dd" name="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>"/> 
                                         <span class="add-on">
                                             <i class="glyphicon glyphicon-calendar" ></i>
                                         </span>
@@ -64,22 +80,62 @@ include './includes.php';
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="name" class="col-sm-3 control-label">Invoice Number</label>
+                                <label for="invoice" class="col-sm-3 control-label">Invoice Number</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="invoice" id="invoice" class="form-control">
+                                    <input type="text" name="invoice" id="invoice"  value="<?php echo $invoice; ?>"class="form-control">
                                 </div>
                             </div> 
                         </div>
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="name" class="col-sm-3 control-label">NIC</label>
+                                <label for="nic" class="col-sm-3 control-label">NIC</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="inc" id="inc" class="form-control" >
+                                    <input type="text" name="nic" id="nic" class="form-control"  value="<?php echo $nic; ?>">
                                 </div>
                             </div> 
                         </div>
-                    </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9"> 
+                                <input type="submit" name="search" class="btn btn-default" id="btn-submit" value="search" >
+                            </div>
+                        </div>
+                    </form>
+
+                    <?php
+                    if ($result) {
+                        ?>
+
+
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Invoice</th>
+                                <th>Date</th>
+                                <th>Customer</th>
+                                <th>Customer NIC</th>
+                                <th>Value</th>
+                            </tr>
+
+                            <?php
+                            foreach ($result as $pawning) {
+                                ?>
+                                <tr>
+                                    <td><?php echo SystemData::viewInvoiceId($pawning['id']); ?></td>
+                                    <td><?php echo $pawning['date']; ?></td>
+                                    <td><?php echo $pawning['name']; ?></td>
+                                    <td><?php echo $pawning['nic']; ?></td>
+                                    <td><?php echo $pawning['amount']; ?></td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+
+                        </table>
+                        <?php
+                    }
+                    ?>
+
                 </div>
             </div>
         </div> 
