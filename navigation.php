@@ -38,7 +38,11 @@ $customer = Customer::getCustomers();
                         <li><a href="view_releasing.php"><i class="fa fa-angle-right"></i>View</a></li>
                     </ul>
                 </li>
-                <li><a href="Report.php"><i class="fa fa-list-alt"></i>Report </a>
+                <li><a href=""><i class="fa fa-list-alt"></i>Report <span class="arrow"></span></a>
+                    <ul class="wsmenu-submenu">
+                        <li><a href="pawning_report.php"><i class="fa fa-angle-right"></i>Pawning </a></li>
+                        <li><a href="release_report.php"><i class="fa fa-angle-right"></i>Release</a></li>
+                    </ul>
                 </li>
                 <li><a href="profile.php?id=<?php echo $user['id']; ?>"><i class="fa fa-list-alt"></i>Profile </a></li>
             </ul>
