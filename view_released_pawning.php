@@ -53,9 +53,6 @@ $invoice_id = SystemData::getInvoiceId();
                                             <a class="btn btn-default"  href="edit_pawning.php?id=<?php echo $detail['id']; ?>">
                                                 <i class="glyphicon glyphicon-pencil"></i>
                                             </a>
-                                            <a class="btn btn-default"  href="add_new_release.php?id=<?php echo $detail['id']; ?>">
-                                                <i class="glyphicon glyphicon-ban-circle"></i>
-                                            </a>
                                         </td>
                                         <?php
                                     }
