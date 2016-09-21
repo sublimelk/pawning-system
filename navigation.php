@@ -10,7 +10,7 @@ $customer = Customer::getCustomers();
         <a class="smallogo"><img src="images/logo.jpg" width="87" alt="" /></a>
     </div>
     <div class="wsmain ">
-        <div class="smllogo"><a href="index.php"><img src="images/logo.jpg" alt=""/></a></div>
+        <div class="smllogo"><a href="index.php"><img src="" alt=""/></a></div>
 
         <nav class="wsmenu clearfix">
             <ul class="mobile-sub wsmenu-list">

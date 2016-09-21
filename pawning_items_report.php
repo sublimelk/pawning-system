@@ -46,55 +46,58 @@ if (isset($_POST['search'])) {
                     <h3 class="panel-title">Item Report</h3>
                 </div>
                 <div class="panel-body">
-                    <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="day_from" class="col-sm-3 control-label">Day From</label>
-                                <div class="col-sm-9">
-                                    <div id="" class="datetimepicker1 input-append date"> 
-                                        <input data-format="yyyy-MM-dd" name="day_from" id="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>"/> 
-                                        <span class="add-on">
-                                            <i class="glyphicon glyphicon-calendar" ></i>
-                                        </span>
-                                    </div>
+                    <div class="row">
+                        <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
+                            <div class="col-md-11">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="day_from" class="col-sm-3 control-label">Day From</label>
+                                        <div class="col-sm-9">
+                                            <div id="" class="datetimepicker1 input-append date"> 
+                                                <input data-format="yyyy-MM-dd" name="day_from" id="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>"/> 
+                                                <span class="add-on">
+                                                    <i class="glyphicon glyphicon-calendar" ></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div> 
                                 </div>
-                            </div> 
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="day_to" class="col-sm-3 control-label">Day To</label>
-                                <div class="col-sm-9">
-                                    <div id="" class="datetimepicker1 input-append date"> 
-                                        <input data-format="yyyy-MM-dd" name="day_to" id="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>"/> 
-                                        <span class="add-on">
-                                            <i class="glyphicon glyphicon-calendar" ></i>
-                                        </span>
-                                    </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="day_to" class="col-sm-3 control-label">Day To</label>
+                                        <div class="col-sm-9">
+                                            <div id="" class="datetimepicker1 input-append date"> 
+                                                <input data-format="yyyy-MM-dd" name="day_to" id="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>"/> 
+                                                <span class="add-on">
+                                                    <i class="glyphicon glyphicon-calendar" ></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div> 
                                 </div>
-                            </div> 
-                        </div>
 
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="isRelease" class="col-sm-3 control-label">Select</label>
-                                <div class="col-sm-9">
-                                    <select name="isRelease" class="form-control" id="isRelease">
-                                        <option value="" <?php if (empty($isRelease)) echo 'selected'; ?>>All Item</option>
-                                        <option value="1" <?php if ($isRelease == 1) echo 'selected'; ?>>Released Item</option>
-                                        <option value="NULL" <?php if ($isRelease == 'NULL') echo 'selected'; ?>>Current Item</option>
-                                    </select>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="isRelease" class="col-sm-3 control-label">Select</label>
+                                        <div class="col-sm-9">
+                                            <select name="isRelease" class="form-control" id="isRelease">
+                                                <option value="" <?php if (empty($isRelease)) echo 'selected'; ?>>All Item</option>
+                                                <option value="1" <?php if ($isRelease == 1) echo 'selected'; ?>>Released Item</option>
+                                                <option value="NULL" <?php if ($isRelease == 'NULL') echo 'selected'; ?>>Current Item</option>
+                                            </select>
+                                        </div>
+                                    </div> 
                                 </div>
-                            </div> 
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9"> 
-                                <input type="submit" name="search" class="btn btn-default" id="btn-submit" value="search" >
                             </div>
-                        </div>
-                    </form>
-
+                            
+                            <div class="col-md-1 text-right">
+                                <div class="form-group">
+                                    <input type="submit" name="search" class="btn btn-default" id="btn-submit" value="search" >
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <?php
                     if ($result) {
                         ?>
