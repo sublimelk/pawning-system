@@ -10,8 +10,10 @@ if (isset($_POST['update'])) {
     Customer::editCustomer($id);
 
     $customerId = $_GET['id'];
-
-    Customer::setPhoto($customerId, $_FILES);
+    
+    if ($_FILES["fileToUpload"]["error"] == 0) {
+        Customer::setPhoto($customerId, $_FILES);
+    }
 }
 ?>
 <html>
@@ -48,14 +50,14 @@ if (isset($_POST['update'])) {
                                 <div class="form-group">
                                     <label for="fileToUpload" class="col-sm-3 control-label">Photo</label>
                                     <div class="col-sm-9">
-                                        <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" required="TRUE"> 
+                                        <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" > 
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="nic" class="col-sm-3 control-label">NIC Number</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="nic" id="nic" class="form-control" value="<?php echo $customer['nic']; ?>"/> 
+                                        <input type="number" name="nic" id="nic" class="form-control" value="<?php echo $customer['nic']; ?>"/> 
                                     </div>
                                 </div>
 
