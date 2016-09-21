@@ -17,7 +17,7 @@ class Releasing {
 
         $db = new DB();
 
-        $sql = "SELECT r.id 'id', c.name 'customer', p.id 'invoice', c.nic 'nic' ,r.date 'date', r.releasing_interest 'interest', r.settle_amount 'amount' FROM customer c, pawning p, releasing r WHERE p.id = r.pawning AND p.customer = c.id ";
+        $sql = "SELECT r.id 'id', c.name 'customer', p.id 'invoice', c.nic 'nic' ,r.date 'date', r.releasing_interest 'interest', r.settle_amount 'amount' FROM customer c, pawning p, releasing r WHERE p.id = r.pawning AND p.customer = c.id AND p.isRelease = '1'";
         
         $result = $db->readQuery($sql);
         
