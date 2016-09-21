@@ -49,7 +49,7 @@ if (isset($_POST['save'])) {
                                 <div class="form-group">
                                     <label for="nic" class="col-sm-3 control-label">NIC Number</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="nic" id="nic" class="form-control" placeholder="NIC NUMBER" required="TRUE"/> 
+                                        <input type="number" name="nic" id="nic" class="form-control" placeholder="NIC NUMBER" required="TRUE"/> 
                                     </div>
                                 </div>
                                 
