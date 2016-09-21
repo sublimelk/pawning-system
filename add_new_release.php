@@ -186,10 +186,10 @@ if (isset($_POST['save'])) {
                                     <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
 
                                         <div class="form-group">
-                                            <label for="image" class="col-sm-2 control-label">Date</label>
+                                            <label for="date" class="col-sm-2 control-label">Date</label>
                                             <div class="col-sm-10">
                                                 <div id="datetimepicker1" class="input-append date"> 
-                                                    <input data-format="yyyy-MM-dd hh:mm:ss" name="date" class="form-control date_picker" required="TRUE"/> 
+                                                    <input data-format="yyyy-MM-dd hh:mm:ss" name="date" id="date" class="form-control date_picker" required="TRUE"/> 
                                                     <span class="add-on">
                                                         <i class="glyphicon glyphicon-calendar" ></i>
                                                     </span>
@@ -201,14 +201,14 @@ if (isset($_POST['save'])) {
                                         <input type="hidden" name="pawning_id" id="pawning_id" class="form-control" value="<?php echo $pawning['id']; ?>"/> 
 
                                         <div class="form-group">
-                                            <label for="name" class="col-sm-2 control-label">Interest(%)</label>
+                                            <label for="interest" class="col-sm-2 control-label">Interest(%)</label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="interest" id="interest" class="form-control" placeholder="INTEREST(%)" required="TRUE"> 
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="name" class="col-sm-2 control-label">Settle Amount</label>
+                                            <label for="setl_amount" class="col-sm-2 control-label">Settle Amount</label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="setl_amount" id="setl_amount" class="form-control" placeholder="AMOUNT" required="TRUE"> 
                                             </div>

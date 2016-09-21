@@ -49,13 +49,13 @@ $interest = SystemData::getInterest();
                             <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
 
                                 <div class="form-group">
-                                    <label for="name" class="col-sm-3 control-label">Invoice Number</label>
+                                    <label for="invoice" class="col-sm-3 control-label">Invoice Number</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="invoice" id="invoice" class="form-control" value="<?php echo $invoice_id ?>"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="image" class="col-sm-3 control-label">Date</label>
+                                    <label for="date" class="col-sm-3 control-label">Date</label>
                                     <div class="col-sm-9">
                                         <div id="datetimepicker1" class="input-append date"> 
                                             <input data-format="yyyy-MM-dd hh:mm:ss" name="date" class="form-control date_picker" required="TRUE" value="<?php echo $detail['date']; ?>"/> 
@@ -68,7 +68,7 @@ $interest = SystemData::getInterest();
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="seo" class="col-sm-3 control-label">Customer Name</label>
+                                    <label for="customer" class="col-sm-3 control-label">Customer Name</label>
                                     <div class="col-sm-9">
                                         <select name="customer" class="form-control"> 
                                             <?php
@@ -88,7 +88,7 @@ $interest = SystemData::getInterest();
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="seo" class="col-sm-3 control-label">Item Type</label>
+                                    <label for="item_type" class="col-sm-3 control-label">Item Type</label>
                                     <div class="col-sm-9">
                                         <select name="item_type" class="form-control"> 
                                             <?php
@@ -110,7 +110,7 @@ $interest = SystemData::getInterest();
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="seo" class="col-sm-3 control-label">Carat Size</label>
+                                    <label for="car_size" class="col-sm-3 control-label">Carat Size</label>
                                     <div class="col-sm-9">
                                         <select name="car_size" class="form-control">
                                             <?php
@@ -132,21 +132,21 @@ $interest = SystemData::getInterest();
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="propertyKeyword" class="col-sm-3 control-label">Weight(g)</label>
+                                    <label for="weight" class="col-sm-3 control-label">Weight(g)</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="weight" id="weight" class="form-control" value="<?php echo $detail['weight']; ?>"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="propertyKeyword" class="col-sm-3 control-label">Interest(%)</label>
+                                    <label for="interest" class="col-sm-3 control-label">Interest(%)</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="interest" id="interest" class="form-control" value="<?php echo $detail['interest']; ?>"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="propertyKeyword" class="col-sm-3 control-label">Amount</label>
+                                    <label for="amount" class="col-sm-3 control-label">Amount</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="amount" id="amount" class="form-control" value="<?php echo $detail['amount']; ?>"/>
                                     </div>

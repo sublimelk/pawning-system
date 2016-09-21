@@ -40,35 +40,35 @@ if (isset($_POST['save'])) {
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="sortDescription" class="col-sm-3 control-label">Photo</label>
+                                    <label for="fileToUpload" class="col-sm-3 control-label">Photo</label>
                                     <div class="col-sm-9">
                                         <input type="file" name="fileToUpload" id="fileToUpload" class="form-control" required="TRUE"> 
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="image" class="col-sm-3 control-label">NIC Number</label>
+                                    <label for="nic" class="col-sm-3 control-label">NIC Number</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="nic" id="nic" class="form-control" placeholder="NIC NUMBER" required="TRUE"/> 
                                     </div>
                                 </div>
                                 
                                 <div class="form-group">
-                                    <label for="seo" class="col-sm-3 control-label">Address</label>
+                                    <label for="address" class="col-sm-3 control-label">Address</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="address" id="address" class="form-control" placeholder="ADDRESS" required="TRUE"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="seo" class="col-sm-3 control-label">Phone</label>
+                                    <label for="phone" class="col-sm-3 control-label">Phone</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="phone" id="phone" class="form-control" placeholder="PHONE" required="TRUE"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="propertyKeyword" class="col-sm-3 control-label">Feedback</label>
+                                    <label for="feedback" class="col-sm-3 control-label">Feedback</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="feedback" id="feedback" class="form-control" placeholder="FEEDBACK" required="TRUE">
                                     </div>

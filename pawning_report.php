@@ -51,55 +51,57 @@ if (isset($_POST['search'])) {
                 </div>
                 <div class="panel-body">
                     <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="image" class="col-sm-3 control-label">Day From</label>
-                                <div class="col-sm-9">
-                                    <div id="" class="datetimepicker1 input-append date"> 
-                                        <input data-format="yyyy-MM-dd" name="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>"/> 
-                                        <span class="add-on">
-                                            <i class="glyphicon glyphicon-calendar" ></i>
-                                        </span>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="day_from" class="col-sm-3 control-label">Day From</label>
+                                    <div class="col-sm-9">
+                                        <div id="" class="datetimepicker1 input-append date"> 
+                                            <input data-format="yyyy-MM-dd" name="day_from" id="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>"/> 
+                                            <span class="add-on">
+                                                <i class="glyphicon glyphicon-calendar" ></i>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                            </div> 
-                        </div>
+                                </div> 
+                            </div>
 
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="image" class="col-sm-3 control-label">Day To</label>
-                                <div class="col-sm-9">
-                                    <div id="" class="datetimepicker1 input-append date"> 
-                                        <input data-format="yyyy-MM-dd" name="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>"/> 
-                                        <span class="add-on">
-                                            <i class="glyphicon glyphicon-calendar" ></i>
-                                        </span>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="day_to" class="col-sm-3 control-label">Day To</label>
+                                    <div class="col-sm-9">
+                                        <div id="" class="datetimepicker1 input-append date"> 
+                                            <input data-format="yyyy-MM-dd" name="day_to" id="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>"/> 
+                                            <span class="add-on">
+                                                <i class="glyphicon glyphicon-calendar" ></i>
+                                            </span>
+                                        </div>
                                     </div>
-                                </div>
-                            </div> 
-                        </div>
+                                </div> 
+                            </div>
 
-                        <div class="col-md-3">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="invoice" class="col-sm-3 control-label">Invoice Number</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="invoice" id="invoice"  value="<?php echo $invoice; ?>"class="form-control">
+                                    </div>
+                                </div> 
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="nic" class="col-sm-3 control-label">NIC</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="nic" id="nic" class="form-control"  value="<?php echo $nic; ?>">
+                                    </div>
+                                </div> 
+                            </div>
+
                             <div class="form-group">
-                                <label for="invoice" class="col-sm-3 control-label">Invoice Number</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="invoice" id="invoice"  value="<?php echo $invoice; ?>"class="form-control">
+                                <div class="col-sm-offset-3 col-sm-9"> 
+                                    <input type="submit" name="search" class="btn btn-default" id="btn-submit" value="search" >
                                 </div>
-                            </div> 
-                        </div>
-
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="nic" class="col-sm-3 control-label">NIC</label>
-                                <div class="col-sm-9">
-                                    <input type="text" name="nic" id="nic" class="form-control"  value="<?php echo $nic; ?>">
-                                </div>
-                            </div> 
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9"> 
-                                <input type="submit" name="search" class="btn btn-default" id="btn-submit" value="search" >
                             </div>
                         </div>
                     </form>
@@ -131,7 +133,7 @@ if (isset($_POST['search'])) {
                                     <td><?php
                                         if ($pawning['isRelease'] == NULL) {
                                             echo 'NULL';
-                                        }else{
+                                        } else {
                                             echo '1';
                                         }
                                         ?></td>

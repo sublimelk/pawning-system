@@ -50,7 +50,7 @@ $detail = Releasing::getAllById($id);
                         <div class="col-sm-9">
                             <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="image" class="col-sm-3 control-label">Date</label>
+                                    <label for="date" class="col-sm-3 control-label">Date</label>
                                     <div class="col-sm-9">
                                         <div id="datetimepicker1" class="input-append date"> 
                                             <input data-format="yyyy-MM-dd hh:mm:ss" name="date" class="form-control date_picker" value="<?php echo $detail['date']; ?>"/> 
@@ -62,14 +62,14 @@ $detail = Releasing::getAllById($id);
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="image" class="col-sm-3 control-label">Settle Amount</label>
+                                    <label for="amount" class="col-sm-3 control-label">Settle Amount</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="amount" id="amount" class="form-control" value="<?php echo $detail['settle_amount']; ?>"/> 
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="seo" class="col-sm-3 control-label">Interest(%)</label>
+                                    <label for="interest" class="col-sm-3 control-label">Interest(%)</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="interest" id="nterest" class="form-control" value="<?php echo $detail['releasing_interest']; ?>"/>
                                     </div>
