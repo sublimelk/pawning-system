@@ -53,10 +53,10 @@ if (isset($_POST['search'])) {
                     <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="image" class="col-sm-3 control-label">Day From</label>
+                                <label for="day_from" class="col-sm-3 control-label">Day From</label>
                                 <div class="col-sm-9">
                                     <div id="" class="datetimepicker1 input-append date"> 
-                                        <input data-format="yyyy-MM-dd" name="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>"/> 
+                                        <input data-format="yyyy-MM-dd" name="day_from" id="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>"/> 
                                         <span class="add-on">
                                             <i class="glyphicon glyphicon-calendar" ></i>
                                         </span>
@@ -67,10 +67,10 @@ if (isset($_POST['search'])) {
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label for="image" class="col-sm-3 control-label">Day To</label>
+                                <label for="day_to" class="col-sm-3 control-label">Day To</label>
                                 <div class="col-sm-9">
                                     <div id="" class="datetimepicker1 input-append date"> 
-                                        <input data-format="yyyy-MM-dd" name="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>"/> 
+                                        <input data-format="yyyy-MM-dd" name="day_to" id="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>"/> 
                                         <span class="add-on">
                                             <i class="glyphicon glyphicon-calendar" ></i>
                                         </span>
