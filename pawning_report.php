@@ -10,7 +10,8 @@ $nic = NULL;
 
 if (isset($_POST['search'])) {
     $result = Report::getPawningReport($_POST);
-    
+
+
     $dateFrom = $_POST['day_from'];
     $dateTo = $_POST['day_to'];
     $invoice = $_POST['invoice'];
@@ -46,7 +47,7 @@ if (isset($_POST['search'])) {
             <?php include './navigation.php'; ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Report</h3>
+                    <h3 class="panel-title">Pawning Report</h3>
                 </div>
                 <div class="panel-body">
                     <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
@@ -127,7 +128,13 @@ if (isset($_POST['search'])) {
                                     <td><?php echo $pawning['name']; ?></td>
                                     <td><?php echo $pawning['nic']; ?></td>
                                     <td><?php echo $pawning['amount']; ?></td>
-                                    <td></td>
+                                    <td><?php
+                                        if ($pawning['isRelease'] == NULL) {
+                                            echo 'NULL';
+                                        }else{
+                                            echo '1';
+                                        }
+                                        ?></td>
                                 </tr>
                                 <?php
                             }

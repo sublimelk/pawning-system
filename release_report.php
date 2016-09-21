@@ -47,7 +47,7 @@ if (isset($_POST['search'])) {
             <?php include './navigation.php'; ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Report</h3>
+                    <h3 class="panel-title">Release Report</h3>
                 </div>
                 <div class="panel-body">
                     <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
