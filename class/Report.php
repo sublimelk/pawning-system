@@ -55,7 +55,7 @@ class Report {
         
         $db = new DB();
         
-        $sql = "SELECT p.id, r.date, r.settle_amount, c.name, c.nic FROM customer c, pawning p, releasing r WHERE  p.customer = c.id AND r.pawning = p.id ";
+        $sql = "SELECT p.id, r.date, r.settle_amount, c.name, c.nic FROM customer c, pawning p, releasing r WHERE r.pawning = p.id AND p.customer = c.id";
         
         if ($data["nic"]) {
             $sql .= ' AND c.nic = "' . $data["nic"] . '"';
@@ -69,7 +69,7 @@ class Report {
 
             $date2 = strtotime($data["day_from"] . '24:00:00');
 
-            $sql .= ' AND UNIX_TIMESTAMP(p.date) BETWEEN "' . $date1 . '" AND "' . $date2 . '"  ';
+            $sql .= ' AND UNIX_TIMESTAMP(r.date) BETWEEN "' . $date1 . '" AND "' . $date2 . '"  ';
         }
         if ($data["day_from"] && $data["day_to"]) {
 
@@ -77,7 +77,7 @@ class Report {
 
             $date2 = strtotime($data["day_to"] . '24:00:00');
 
-            $sql .= ' AND UNIX_TIMESTAMP(p.date)  BETWEEN "' . $date1 . '" AND "' . $date2 . '"  ';
+            $sql .= ' AND UNIX_TIMESTAMP(r.date)  BETWEEN "' . $date1 . '" AND "' . $date2 . '"  ';
         }
 
         $result = $db->readQuery($sql);
@@ -86,7 +86,7 @@ class Report {
 
         while ($row = mysql_fetch_array($result)) {
 
-            $releas = array(
+            $release = array(
                 'id' => $row['id'],
                 'date' => $row['date'],
                 'settle_amount' => $row['settle_amount'],
@@ -94,9 +94,8 @@ class Report {
                 'nic' => $row['nic']
             );
 
-            array_push($array_res, $releas);
+            array_push($array_res, $release);
         }
-        
         return $array_res;
         
     }
