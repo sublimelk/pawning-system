@@ -42,6 +42,7 @@ $customer = Customer::getCustomers();
                     <ul class="wsmenu-submenu">
                         <li><a href="pawning_report.php"><i class="fa fa-angle-right"></i>Pawning </a></li>
                         <li><a href="release_report.php"><i class="fa fa-angle-right"></i>Release</a></li>
+                        <li><a href="pawning_items_report.php"><i class="fa fa-angle-right"></i>Item Report</a></li>
                     </ul>
                 </li>
                 <li><a href="profile.php?id=<?php echo $user['id']; ?>"><i class="fa fa-list-alt"></i>Profile </a></li>
