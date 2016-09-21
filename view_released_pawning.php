@@ -25,7 +25,7 @@ $invoice_id = SystemData::getInvoiceId();
             <?php include './navigation.php'; ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">View Pawning</h3>
+                    <h3 class="panel-title">View Released Pawning</h3>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive"> 
