@@ -115,6 +115,7 @@ if (isset($_POST['search'])) {
                                 <th>Customer</th>
                                 <th>Customer NIC</th>
                                 <th>Value</th>
+                                <th>Release</th>
                             </tr>
 
                             <?php
@@ -126,6 +127,7 @@ if (isset($_POST['search'])) {
                                     <td><?php echo $pawning['name']; ?></td>
                                     <td><?php echo $pawning['nic']; ?></td>
                                     <td><?php echo $pawning['amount']; ?></td>
+                                    <td></td>
                                 </tr>
                                 <?php
                             }
