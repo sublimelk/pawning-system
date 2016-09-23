@@ -51,6 +51,7 @@ class Report {
 
         return $array_res;
     }
+    
 
     public function getReleaseReport($data) {
 
@@ -101,6 +102,7 @@ class Report {
         }
         return $array_res;
     }
+    
 
     public function getPawningItems($data) {
 

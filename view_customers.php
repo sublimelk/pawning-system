@@ -1,6 +1,13 @@
 <?php
 include './includes.php';
 
+
+if (empty($_GET)) {
+    $message = "";
+} else {
+    $message = $_GET['message'];
+}
+
 $customers = Customer::getCustomers();
 ?>
 
@@ -20,6 +27,18 @@ $customers = Customer::getCustomers();
     <body>
         <div class="container-fluid"> 
             <?php include './navigation.php'; ?>
+            <?php
+            if ($message) {
+                ?>
+                <div class="alert alert-dismissible" role="alert">
+                    <a href="#" class="alert-link"><?php echo $message; ?></a>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php
+            }
+            ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">View Customers</h3>
@@ -48,10 +67,10 @@ $customers = Customer::getCustomers();
                                                 <i class="glyphicon glyphicon-list-alt"></i>
                                             </a>
                                             <a class="btn btn-default"  href="edit_customer.php?id=<?php echo $customer['id']; ?>">
-                                                 <i class="glyphicon glyphicon-pencil"></i>
+                                                <i class="glyphicon glyphicon-pencil"></i>
                                             </a>
                                             <a class="btn btn-danger"  href="delete_customer.php?id=<?php echo $customer['id']; ?>">
-                                                 <i class="glyphicon glyphicon-trash"></i>
+                                                <i class="glyphicon glyphicon-trash"></i>
                                             </a>
                                         </td>
                                         <?php
