@@ -1,3 +1,5 @@
+
+
 <?php
 
 class Customer {
@@ -59,11 +61,13 @@ class Customer {
         $sql = "INSERT INTO `customer` (`name`,`nic`,`address`,`phone`,`feedback`) VALUES ('" . $_POST['name'] . "','" . $_POST['nic'] . "','" . $_POST['address'] . "','" . $_POST['phone'] . "','" . $_POST['feedback'] . "')";
 
         $result = $db->readQuery($sql);
-
+         
         return $result;
+        
     }
 
     public function editCustomer($id) {
+        
         $db = new DB();
 
         $sql = "UPDATE `customer` SET `name` = '" . $_POST['name'] . "', `nic` = '" . $_POST['nic'] . "', `address` = '" . $_POST['address'] . "' , `phone` = '" . $_POST['phone'] . "' , `feedback` = '" . $_POST['feedback'] . "' WHERE id = $id ";
@@ -124,12 +128,9 @@ class Customer {
                 $sql = "UPDATE `customer` SET `img_type` = '" . $ext . "' WHERE `id` = '" . $customerId . "' ";
 
                 $db->readQuery($sql);
-
-
-
-                echo "The file " . basename($file["fileToUpload"]["name"]) . " has been uploaded.";
+                
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                
             }
         }
     }
