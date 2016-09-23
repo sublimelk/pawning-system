@@ -11,4 +11,5 @@ include '/class/Pawning.php';
 include './class/ImageResizer.php';
 include './class/Releasing.php';
 include './class/Report.php';
+include './class/Carat.php';
  
