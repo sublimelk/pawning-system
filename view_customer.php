@@ -6,6 +6,8 @@ $id = $_GET['id'];
 $customers = Customer::getCustomersById($id);
 
 $pawnings = Pawning::getPawningByCustomerId($id);
+
+$carat = Carat::getAll();
 ?>
 <html>
     <head>
@@ -36,7 +38,20 @@ $pawnings = Pawning::getPawningByCustomerId($id);
                                 <div class="col-sm-9">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <img src="img/customers/<?php echo $customers['id'] . '.' . $customers['img_type']; ?>" class="img-responsive" width="100%" height="auto"/>
+
+                                            <?php
+                                            if (!$customers['img_type']) {
+                                                ?>
+                                                <img src="img/customers/null.png" class="img-responsive" width="100%" height="auto"/>
+
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <img src="img/customers/<?php echo $customers['id'] . '.' . $customers['img_type']; ?>" class="img-responsive" width="100%" height="auto"/>
+
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="table-responsive"> 
@@ -89,7 +104,17 @@ $pawnings = Pawning::getPawningByCustomerId($id);
                                                     <tr>
                                                         <td><?php echo $pawning['date']; ?></td>
                                                         <td><?php echo SystemData::getItemTypes()[$pawning['item_type']]; ?></td>
-                                                        <td><?php echo SystemData::getCaratSize()[$pawning['car_size']]; ?></td>
+                                                        <?php
+                                                        foreach (Carat::getAll() as $size) {
+
+                                                            if ($size['id'] == $pawning['car_size']) {
+                                                                ?>
+                                                                <td><?php echo $size['size']; ?></td>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+
                                                         <td><?php echo $pawning['weight']; ?></td>
                                                         <td><?php echo $pawning['interest'] . '%'; ?></td>
                                                         <td><?php echo number_format($pawning['amount'], 2) . "<br>"; ?></td>
