@@ -1,6 +1,8 @@
 <?php
 include './includes.php';
 
+$message = NULL;
+
 $id = $_GET['id'];
 
 $detail = Releasing::getAllById($id);
@@ -8,7 +10,13 @@ $detail = Releasing::getAllById($id);
 
 if (isset($_POST['update'])) {
 
-    Releasing::editreleasing($id);
+    $res = Releasing::editreleasing($id);
+    
+    if ($res) {
+        $message = ' You successfully update Release  ';
+    } else {
+        $message = ' Not successfully update Release  ';
+    }
 
     $customerId = $_GET['id'];
     
@@ -41,6 +49,18 @@ $detail = Releasing::getAllById($id);
     <body>
         <div class="container-fluid">
             <?php include './navigation.php'; ?>
+            <?php
+            if ($message) {
+                ?>
+                <div class="alert alert-dismissible" role="alert">
+                    <a href="#" class="alert-link"><?php echo $message;?></a>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php
+            }
+            ?> 
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Edit Releasing</h3>
@@ -64,14 +84,14 @@ $detail = Releasing::getAllById($id);
                                 <div class="form-group">
                                     <label for="amount" class="col-sm-3 control-label">Settle Amount</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="amount" id="amount" class="form-control" value="<?php echo $detail['settle_amount']; ?>"/> 
+                                        <input type="text" name="amount" id="amount" class="form-control" value="<?php echo $detail['settle_amount']; ?>" autocomplete="off"/> 
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="interest" class="col-sm-3 control-label">Interest(%)</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="interest" id="nterest" class="form-control" value="<?php echo $detail['releasing_interest']; ?>"/>
+                                        <input type="text" name="interest" id="nterest" class="form-control" value="<?php echo $detail['releasing_interest']; ?>" autocomplete="off"/>
                                     </div>
                                 </div>
 
