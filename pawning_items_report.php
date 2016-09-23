@@ -16,6 +16,7 @@ if (isset($_POST['search'])) {
 ?>
 
 
+
 <html>
     <head>
         <title></title>
@@ -90,7 +91,7 @@ if (isset($_POST['search'])) {
                                     </div> 
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-1 text-right">
                                 <div class="form-group">
                                     <input type="submit" name="search" class="btn btn-default" id="btn-submit" value="search" >
@@ -120,11 +121,17 @@ if (isset($_POST['search'])) {
                                 <tr>
                                     <td><?php echo SystemData::viewInvoiceId($pawning['id']); ?></td>
                                     <td><?php echo $pawning['date']; ?></td>
-
                                     <td><?php echo SystemData::getItemTypes()[$pawning['item_type']]; ?></td>
+                                    <?php
+                                    foreach (Carat::getAll() as $size) {
 
-                                    <td><?php echo SystemData::getCaratSize()[$pawning['car_size']]; ?></td>
-
+                                        if ($size['id'] == $pawning['car_size']) {
+                                            ?>
+                                            <td><?php echo $size['size']; ?></td>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                     <td><?php echo $pawning['weight']; ?></td>
                                     <td><?php echo $pawning['isRelease']; ?></td>
                                     <td class="text-right"><?php echo number_format($pawning['amount'], 2); ?></td>
