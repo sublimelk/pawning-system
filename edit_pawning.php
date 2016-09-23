@@ -1,11 +1,19 @@
 <?php
 include './includes.php';
 
+$message = NULL;
+
 $id = $_GET['id'];
 
 if (isset($_POST['save'])) {
 
-    $a = Pawning::editPawning($id);
+    $res = Pawning::editPawning($id);
+    
+    if ($res) {
+        $message = ' You successfully Update Pawning  ';
+    } else {
+        $message = ' Not successfully Update Pawning ';
+    }
 }
 
 $detail = Pawning::getPawningById($id);
@@ -39,6 +47,18 @@ $interest = SystemData::getInterest();
     <body>
         <div class="container-fluid">
             <?php include './navigation.php'; ?>
+            <?php
+            if ($message) {
+                ?>
+                <div class="alert alert-dismissible" role="alert">
+                    <a href="#" class="alert-link"><?php echo $message;?></a>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php
+            }
+            ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Edit Pawning</h3>
@@ -49,9 +69,9 @@ $interest = SystemData::getInterest();
                             <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
 
                                 <div class="form-group">
-                                    <label for="invoice" class="col-sm-3 control-label">Invoice Number</label>
+                                    <label for="invoice" class="col-sm-3 control-label">Invoice</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="invoice" id="invoice" class="form-control" value="<?php echo $invoice_id ?>"/>
+                                        <input type="text" name="invoice" id="invoice" class="form-control" value="<?php echo $invoice_id ?>" disabled="TRUE"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -68,14 +88,17 @@ $interest = SystemData::getInterest();
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="customer" class="col-sm-3 control-label">Customer Name</label>
+                                    <label for="customer" class="col-sm-3 control-label">Customer</label>
                                     <div class="col-sm-9">
                                         <select name="customer" class="form-control"> 
+                                            <option value=""> --- Please Select --- </option>
                                             <?php
                                             foreach (Customer::getCustomers() as $customer) {
                                                 if ($customer['id'] == $detail['customer']) {
-                                                    ?>
-                                                    }else{
+                                                    ?> 
+                                                    <option value="<?php echo $customer['id']; ?>" selected="TRUE"> <?php echo $customer['name']; ?></option>
+                                                    <?php
+                                                } else {
                                                     ?>
                                                     <option value="<?php echo $customer['id']; ?>" > <?php echo $customer['name']; ?></option>
                                                     <?php
@@ -114,15 +137,15 @@ $interest = SystemData::getInterest();
                                     <div class="col-sm-9">
                                         <select name="car_size" class="form-control">
                                             <?php
-                                            foreach (SystemData::getCaratSize() as $key => $size) {
+                                            foreach (Carat::getAll() as $size) {
 
-                                                if ($key == $detail['car_size']) {
+                                                if ($size['id'] == $detail['car_size']) {
                                                     ?>
-                                                    <option value="<?php echo $key; ?>" selected=""> <?php echo $size; ?></option>
+                                                    <option value="<?php echo $size['id']; ?>" selected=""> <?php echo $size['size']; ?></option>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <option value="<?php echo $key; ?>"> <?php echo $size; ?></option>
+                                                    <option value="<?php echo $size['id']; ?>"> <?php echo $size['size']; ?></option>
                                                     <?php
                                                 }
                                             }
@@ -134,21 +157,21 @@ $interest = SystemData::getInterest();
                                 <div class="form-group">
                                     <label for="weight" class="col-sm-3 control-label">Weight(g)</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="weight" id="weight" class="form-control" value="<?php echo $detail['weight']; ?>"/>
+                                        <input type="number" name="weight" id="weight" class="form-control" value="<?php echo $detail['weight']; ?>"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="interest" class="col-sm-3 control-label">Interest(%)</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="interest" id="interest" class="form-control" value="<?php echo $detail['interest']; ?>"/>
+                                        <input type="number" name="interest" id="interest" class="form-control" value="<?php echo $detail['interest']; ?>"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="amount" class="col-sm-3 control-label">Amount</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="amount" id="amount" class="form-control" value="<?php echo $detail['amount']; ?>"/>
+                                        <input type="number" name="amount" id="amount" class="form-control" value="<?php echo $detail['amount']; ?>"/>
                                     </div>
                                 </div>
 
