@@ -70,7 +70,7 @@ class Pawning {
     public function editPawning($id) {
         $db = new DB();
 
-        $sql = "UPDATE `pawning` SET `date` = '" . $_POST['date'] . "', `item_type` = '" . $_POST['item_type'] . "', `car_size` = '" . $_POST['car_size'] . "' , `weight` = '" . $_POST['weight'] . "' , `amount` = '" . $_POST['amount'] . "' WHERE id = $id ";
+        $sql = "UPDATE `pawning` SET `date` = '" . $_POST['date'] . "', `customer` = '".$_POST['customer']."' , `item_type` = '" . $_POST['item_type'] . "', `car_size` = '" . $_POST['car_size'] . "' , `weight` = '" . $_POST['weight'] . "' , `interest` = '" . $_POST['interest'] . "' , `amount` = '" . $_POST['amount'] . "' WHERE id = $id ";
 
         $result = $db->readQuery($sql);
 
