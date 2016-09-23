@@ -45,6 +45,11 @@ $customer = Customer::getCustomers();
                         <li><a href="pawning_items_report.php"><i class="fa fa-angle-right"></i>Item Report</a></li>
                     </ul>
                 </li>
+                <li><a href=""><i class="fa fa-list-alt"></i>Setting<span class="arrow"></span></a>
+                    <ul class="wsmenu-submenu">
+                        <li><a href="manage_carat.php"><i class="fa fa-angle-right"></i>Manage Carat</a></li>
+                    </ul>
+                </li>
                 <li><a href="profile.php?id=<?php echo $user['id']; ?>"><i class="fa fa-list-alt"></i>Profile </a></li>
             </ul>
         </nav>
