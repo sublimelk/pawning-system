@@ -1,6 +1,8 @@
 <?php
 include './includes.php';
 
+$message = NULL;
+
 $showBody = 0;
 $showId = '';
 if (isset($_GET['id'])) {
@@ -15,7 +17,14 @@ if (isset($_GET['id'])) {
 }
 if (isset($_POST['save'])) {
     $showBody = 1;
-    Releasing::addNew($_POST);
+    $res = Releasing::addNew($_POST);
+    
+    if ($res) {
+        $message = ' You successfully add new release  ';
+    } else {
+        $message = ' Not successfully add new release ';
+    }
+    
     Pawning::isReleasing($id);
 }
 ?>
@@ -40,12 +49,48 @@ if (isset($_POST['save'])) {
                 $('#datetimepicker1').datetimepicker({
                     language: 'pt-BR',
                 });
+
+                $('#interest, #day_to').on('keyup change select', function () {
+
+                    var day1 = new Date($("#day_from").val());
+                    var day2 = new Date($("#day_to").val());
+                    var res = monthDiff(day1, day2);
+
+                    $('#setl_amount').val(res);
+
+                });
             });
+            function monthDiff(d1, d2) {
+                var months;
+                months = (d2.getFullYear() - d1.getFullYear()) * 12;
+                months -= d1.getMonth();
+                months += d2.getMonth();
+
+                if (months == 0) {
+                    months = (d2.getDay() - d1.getDay());
+                    alert(months);
+                }
+
+                return months <= 0 ? 0 : months;
+            }
+
         </script>
     </head>
     <body>
         <div class="container-fluid">
             <?php include './navigation.php'; ?>
+            <?php
+            if ($message) {
+                ?>
+                <div class="alert alert-dismissible" role="alert">
+                    <a href="#" class="alert-link"><?php echo $message;?></a>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php
+            }
+            ?> 
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Release Pawning</h3>
@@ -55,7 +100,7 @@ if (isset($_POST['save'])) {
                         <div class="form-group">
                             <label for="id" class="col-sm-2 control-label">Invoice Number</label>
                             <div class="col-sm-10"> 
-                                <input name="id" id="id"class="form-control" value="<?php echo $showId; ?>"required="TRUE"/> 
+                                <input name="id" id="id"class="form-control" value="<?php echo $showId; ?>"required="TRUE" autocomplete="off"/> 
                             </div>
                         </div> 
                         <div class="form-group">
@@ -185,11 +230,13 @@ if (isset($_POST['save'])) {
                                 <div class="col-sm-12">
                                     <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form"> 
 
+                                        <input type="hidden" name="day_from" id="day_from" value="<?php echo $pawning['date']; ?>"/>
+
                                         <div class="form-group">
-                                            <label for="date" class="col-sm-2 control-label">Date</label>
+                                            <label for="day_to" id="date_to" class="col-sm-2 control-label">Date</label>
                                             <div class="col-sm-10">
                                                 <div id="datetimepicker1" class="input-append date"> 
-                                                    <input data-format="yyyy-MM-dd hh:mm:ss" name="date" id="date" class="form-control date_picker" required="TRUE"/> 
+                                                    <input data-format="yyyy-MM-dd hh:mm:ss" name="day_to" id="day_to" class="form-control date_picker" required="TRUE"/> 
                                                     <span class="add-on">
                                                         <i class="glyphicon glyphicon-calendar" ></i>
                                                     </span>
@@ -198,19 +245,19 @@ if (isset($_POST['save'])) {
                                             </div>
                                         </div>
 
-                                        <input type="hidden" name="pawning_id" id="pawning_id" class="form-control" value="<?php echo $pawning['id']; ?>"/> 
+                                        <input type="hidden" name="pawning_id" id="pawning_id" class="form-control" value="<?php echo $pawning['id']; ?>" required="TRUE"/> 
 
                                         <div class="form-group">
                                             <label for="interest" class="col-sm-2 control-label">Interest(%)</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="interest" id="interest" class="form-control" placeholder="INTEREST(%)" required="TRUE"> 
+                                                <input type="text" name="interest" id="interest" class="form-control" value="<?php echo $pawning['interest']; ?>" required="TRUE" autocomplete="off"> 
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="setl_amount" class="col-sm-2 control-label">Settle Amount</label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="setl_amount" id="setl_amount" class="form-control" placeholder="AMOUNT" required="TRUE"> 
+                                                <input type="text" name="setl_amount" id="setl_amount" class="form-control" placeholder="AMOUNT" required="TRUE" autocomplete="off"> 
                                             </div>
                                         </div>
 
