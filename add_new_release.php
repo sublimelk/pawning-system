@@ -5,6 +5,7 @@ $message = NULL;
 
 $showBody = 0;
 $showId = '';
+
 if (isset($_GET['id'])) {
     $showBody = 1;
     $id = $_GET['id'];
@@ -15,16 +16,17 @@ if (isset($_GET['id'])) {
 
     $customers = Customer::getCustomersById($pawning['customer']);
 }
+
 if (isset($_POST['save'])) {
     $showBody = 1;
     $res = Releasing::addNew($_POST);
-    
+
     if ($res) {
         $message = ' You successfully add new release  ';
     } else {
         $message = ' Not successfully add new release ';
     }
-    
+
     Pawning::isReleasing($id);
 }
 ?>
@@ -54,9 +56,16 @@ if (isset($_POST['save'])) {
 
                     var day1 = new Date($("#day_from").val());
                     var day2 = new Date($("#day_to").val());
-                    var res = monthDiff(day1, day2);
+                    var mon = monthDiff(day1, day2);
+                    var int = ($("#interest").val());
+                    var amn = ($("#value").val());
 
-                    $('#setl_amount').val(res);
+                    var amount = ((mon * amn * int / 100) / 12)
+
+                    $('#int_amount').val(amount);
+
+                    var set_amount = parseFloat(amount) + parseFloat(amn);
+                    $('#setl_amount').val(set_amount);
 
                 });
             });
@@ -68,7 +77,6 @@ if (isset($_POST['save'])) {
 
                 if (months == 0) {
                     months = (d2.getDay() - d1.getDay());
-                    alert(months);
                 }
 
                 return months <= 0 ? 0 : months;
@@ -83,7 +91,7 @@ if (isset($_POST['save'])) {
             if ($message) {
                 ?>
                 <div class="alert alert-dismissible" role="alert">
-                    <a href="#" class="alert-link"><?php echo $message;?></a>
+                    <a href="#" class="alert-link"><?php echo $message; ?></a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -111,7 +119,7 @@ if (isset($_POST['save'])) {
                     </form>
                 </div>
                 <?php
-                if ($showBody) {
+                if ($showBody == TRUE) {
                     ?>
                     <div class="panel-body">
                         <div class="row">
@@ -246,11 +254,19 @@ if (isset($_POST['save'])) {
                                         </div>
 
                                         <input type="hidden" name="pawning_id" id="pawning_id" class="form-control" value="<?php echo $pawning['id']; ?>" required="TRUE"/> 
+                                        <input type="hidden" name="value" id="value" class="form-control" value="<?php echo (float) $pawning['amount']; ?>" required="TRUE"/>
 
                                         <div class="form-group">
-                                            <label for="interest" class="col-sm-2 control-label">Interest(%)</label>
+                                            <label for="interest" class="col-sm-2 control-label">Interest Rate(%)</label>
                                             <div class="col-sm-10">
                                                 <input type="text" name="interest" id="interest" class="form-control" value="<?php echo $pawning['interest']; ?>" required="TRUE" autocomplete="off"> 
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="int_amount" class="col-sm-2 control-label">Interest Amount</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="int_amount" id="int_amount" class="form-control" required="TRUE" autocomplete="off"> 
                                             </div>
                                         </div>
 
@@ -272,6 +288,12 @@ if (isset($_POST['save'])) {
                             </div>
                         </div>
                     </div> 
+                    <?php
+                } else {
+                    ?>
+                    <div class = "alert alert-dismissible" role = "alert">
+                        <a class ="alert-info">No Values Found in Database</a>
+                    </div>
                     <?php
                 }
                 ?>
