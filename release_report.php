@@ -2,7 +2,7 @@
 include './includes.php';
 
 $result = NULL;
-
+$message = NULL;
 $dateFrom = NULL;
 $dateTo = NULL;
 $invoice = NULL;
@@ -10,7 +10,14 @@ $nic = NULL;
 
 if (isset($_POST['search'])) {
 
-    $result = Report::getReleaseReport($_POST);
+    if (empty(($_POST['day_from'])) && empty(($_POST['day_to'])) && empty(($_POST['invoice'])) && empty(($_POST['nic']))) {
+
+        $message = 'Please Select Wahat is You Find ?';
+    } else {
+
+        $result = Report::getReleaseReport($_POST);
+    }
+
 
     $dateFrom = $_POST['day_from'];
     $dateTo = $_POST['day_to'];
@@ -45,6 +52,18 @@ if (isset($_POST['search'])) {
     <body>
         <div class="container-fluid"> 
             <?php include './navigation.php'; ?>
+            <?php
+            if ($message) {
+                ?>
+                <div class="alert alert-dismissible" role="alert">
+                    <a href="#" class="alert-link"><?php echo $message; ?></a>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php
+            }
+            ?> 
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Release Report</h3>
@@ -116,10 +135,11 @@ if (isset($_POST['search'])) {
                                 <th>Release Date</th>
                                 <th>Customer</th>
                                 <th>Customer NIC</th>
-                                <th>Release Value</th>
+                                <th class="text-right">Release Value</th>
                             </tr>
 
                             <?php
+                            $tot = 0;
                             foreach ($result as $release) {
                                 ?>
                                 <tr>
@@ -127,12 +147,16 @@ if (isset($_POST['search'])) {
                                     <td><?php echo $release['date']; ?></td>
                                     <td><?php echo $release['name']; ?></td>
                                     <td><?php echo $release['nic']; ?></td>
-                                    <td><?php echo $release['settle_amount']; ?></td>
+                                    <td class="text-right"><?php echo $release['settle_amount']; ?></td>
                                 </tr>
                                 <?php
+                                $tot = $tot + $release['settle_amount'];
                             }
                             ?>
-
+                            <tr>
+                                <th class="text-right" colspan="4">Total : </th>
+                                <th class="text-right" ><?php echo number_format($tot, 2); ?> </th>
+                            </tr>
                         </table>
                         <?php
                     }
