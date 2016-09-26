@@ -6,7 +6,7 @@ class Releasing {
 
         $db = new DB();
 
-        $sql = "INSERT INTO `releasing` (`date`,`pawning`,`releasing_interest`,`settle_amount`) VALUES ('" . $_POST['day_to'] . "', '" . $_POST['pawning_id'] . "', '" . $_POST['interest'] . "', '" . $_POST['setl_amount'] . "')";
+        $sql = "INSERT INTO `releasing` (`date`,`pawning`,`releasing_interest`,`interest_amount`,`settle_amount`) VALUES ('" . $_POST['day_to'] . "', '" . $_POST['pawning_id'] . "', '" . $_POST['interest'] . "','" . $_POST['int_amount'] . "', '" . $_POST['setl_amount'] . "')";
 
         $result = $db->readQuery($sql);
 
@@ -17,7 +17,7 @@ class Releasing {
 
         $db = new DB();
 
-        $sql = "SELECT r.id 'id', c.name 'customer', p.id 'invoice', c.nic 'nic' ,r.date 'date', r.releasing_interest 'interest', r.settle_amount 'amount' FROM customer c, pawning p, releasing r WHERE p.id = r.pawning AND p.customer = c.id AND p.isRelease = '1'";
+        $sql = "SELECT r.id 'id', c.name 'customer', p.id 'invoice', c.nic 'nic' ,r.date 'date', r.releasing_interest 'interest', r.settle_amount 'amount' , r.interest_amount 'int_amount' FROM customer c, pawning p, releasing r WHERE p.id = r.pawning AND p.customer = c.id AND p.isRelease = '1'";
         
         $result = $db->readQuery($sql);
         
@@ -32,10 +32,12 @@ class Releasing {
                 'nic' => $row['nic'],
                 'date' => $row['date'],
                 'interest' => $row['interest'],
+                'int_amount' => $row['int_amount'],
                 'amount' => $row['amount'],
             );
 
             array_push($array_res, $releas);
+            
         }
         return $array_res;
     }
