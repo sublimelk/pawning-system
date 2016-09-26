@@ -19,6 +19,7 @@ $invoice_id = SystemData::getInvoiceId();
 $interest = SystemData::getInterest();
 
 $car_details = Carat::getAll();
+
 ?>
 <html>
     <head>
@@ -104,7 +105,7 @@ $car_details = Carat::getAll();
                                 <div class="form-group">
                                     <label for="customer" class="col-sm-3 control-label">Customer</label>
                                     <div class="col-sm-9">
-                                        <select name="customer" class="form-control"  required="TRUE" >
+                                        <select name="customer" class="form-control" id="customer" required="TRUE" >
                                             <option value=""> --- Please Select --- </option>
                                             <?php
                                             foreach (Customer::getCustomers() as $customer) {
@@ -120,7 +121,7 @@ $car_details = Carat::getAll();
                                 <div class="form-group">
                                     <label for="item_type" class="col-sm-3 control-label">Item Type</label>
                                     <div class="col-sm-9">
-                                        <select name="item_type" class="form-control"  required="TRUE" >
+                                        <select name="item_type" class="form-control" id="item_type" required="TRUE" >
                                             <option value=""> --- Please Select --- </option>
                                             <?php
                                             foreach (SystemData::getItemTypes() as $key => $type) {
