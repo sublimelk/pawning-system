@@ -61,13 +61,12 @@ class Customer {
         $sql = "INSERT INTO `customer` (`name`,`nic`,`address`,`phone`,`feedback`) VALUES ('" . $_POST['name'] . "','" . $_POST['nic'] . "','" . $_POST['address'] . "','" . $_POST['phone'] . "','" . $_POST['feedback'] . "')";
 
         $result = $db->readQuery($sql);
-         
+
         return $result;
-        
     }
 
     public function editCustomer($id) {
-        
+
         $db = new DB();
 
         $sql = "UPDATE `customer` SET `name` = '" . $_POST['name'] . "', `nic` = '" . $_POST['nic'] . "', `address` = '" . $_POST['address'] . "' , `phone` = '" . $_POST['phone'] . "' , `feedback` = '" . $_POST['feedback'] . "' WHERE id = $id ";
@@ -88,7 +87,7 @@ class Customer {
     }
 
     public function setPhoto($customerId, $file) {
-        
+
         $target_dir = "img/customers/";
 
         $ext = pathinfo($_FILES['fileToUpload']['name'], PATHINFO_EXTENSION);
@@ -115,7 +114,6 @@ class Customer {
 
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
-
         } else {
             if (move_uploaded_file($file["fileToUpload"]["tmp_name"], $filepath)) {
 
@@ -128,11 +126,22 @@ class Customer {
                 $sql = "UPDATE `customer` SET `img_type` = '" . $ext . "' WHERE `id` = '" . $customerId . "' ";
 
                 $db->readQuery($sql);
-                
             } else {
                 
             }
         }
+    }
+
+    public function checkNIC($nic) {
+        $db = new DB();
+
+        $sql = "SELECT * FROM `customer` WHERE `nic` = '$nic' ";
+
+        $result = $db->readQuery($sql);
+
+        $row = mysql_fetch_array($result);
+
+        return $row;
     }
 
 }
