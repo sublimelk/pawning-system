@@ -94,7 +94,7 @@ $carat = Carat::getAll();
                                                     <th>Carat Size</th>
                                                     <th>Weight</th>
                                                     <th>Interest</th>
-                                                    <th>Amount</th>
+                                                    <th class="text-right">Amount</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -117,7 +117,7 @@ $carat = Carat::getAll();
 
                                                         <td><?php echo $pawning['weight']; ?></td>
                                                         <td><?php echo $pawning['interest'] . '%'; ?></td>
-                                                        <td><?php echo number_format($pawning['amount'], 2) . "<br>"; ?></td>
+                                                        <td class="text-right"><?php echo number_format($pawning['amount'], 2) . "<br>"; ?></td>
 
                                                     </tr>
                                                     <?php
