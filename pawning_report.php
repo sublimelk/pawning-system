@@ -2,14 +2,20 @@
 include './includes.php';
 
 $result = NULL;
-
+$message = NULL;
 $dateFrom = NULL;
 $dateTo = NULL;
 $invoice = NULL;
 $nic = NULL;
 
 if (isset($_POST['search'])) {
-    $result = Report::getPawningReport($_POST);
+    
+    if(empty(($_POST['day_from'])) && empty(($_POST['day_to'])) && empty(($_POST['invoice'])) && empty(($_POST['nic']))){
+        $message = 'Please Select Wahat is You Find ?';
+    }  else {
+           $result = Report::getPawningReport($_POST);
+    }
+ 
 
 
     $dateFrom = $_POST['day_from'];
@@ -45,6 +51,18 @@ if (isset($_POST['search'])) {
     <body>
         <div class="container-fluid"> 
             <?php include './navigation.php'; ?>
+            <?php
+            if ($message) {
+                ?>
+                <div class="alert alert-dismissible" role="alert">
+                    <a href="#" class="alert-link"><?php echo $message; ?></a>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php
+            }
+            ?> 
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Pawning Report</h3>
@@ -115,11 +133,12 @@ if (isset($_POST['search'])) {
                                 <th>Date</th>
                                 <th>Customer</th>
                                 <th>Customer NIC</th>
-                                <th>Value</th>
                                 <th>Release</th>
+                                <th class="text-right">Value</th>
                             </tr>
 
                             <?php
+                            $tot = 0;
                             foreach ($result as $pawning) {
                                 ?>
                                 <tr>
@@ -127,7 +146,6 @@ if (isset($_POST['search'])) {
                                     <td><?php echo $pawning['date']; ?></td>
                                     <td><?php echo $pawning['name']; ?></td>
                                     <td><?php echo $pawning['nic']; ?></td>
-                                    <td><?php echo $pawning['amount']; ?></td>
                                     <td><?php
                                         if ($pawning['isRelease'] == NULL) {
                                             echo 'NULL';
@@ -135,11 +153,16 @@ if (isset($_POST['search'])) {
                                             echo '1';
                                         }
                                         ?></td>
+                                    <td class="text-right"><?php echo $pawning['amount']; ?></td>
                                 </tr>
                                 <?php
+                                $tot = $tot + $pawning['amount'];
                             }
                             ?>
-
+                            <tr>
+                                <th class="text-right" colspan="5">Total : </th>
+                                <th class="text-right" ><?php echo number_format($tot, 2); ?> </th>
+                            </tr>
                         </table>
                         <?php
                     }
