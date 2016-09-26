@@ -7,7 +7,6 @@ $invoice_id = SystemData::getInvoiceId();
 $customer = Customer::getCustomers();
 
 $details = Releasing::getAll();
-
 ?>
 
 
@@ -40,21 +39,24 @@ $details = Releasing::getAll();
                                     <th>Invoice Number</th>
                                     <th>Customer Name</th>
                                     <th>NIC</th>
-                                    <th>Interest</th>
-                                    <th>Settle Amount</th>
+                                    <th>Interest Rate</th>
+                                    <th class="text-right">Interest Amount</th>
+                                    <th class="text-right">Settle Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 foreach ($details as $detail) {
                                     ?>
-                                    
+
                                     <tr>
                                         <td><?php echo $detail['date']; ?></td>
                                         <td><?php echo $detail['invoice']; ?></td>
                                         <td><?php echo $detail['customer']; ?></td>
                                         <td><?php echo $detail['nic']; ?></td>
-                                        <td><?php echo $detail['amount']; ?></td>
+                                        <td><?php echo $detail['interest']; ?></td>
+                                        <td class="text-right"><?php echo number_format($detail['int_amount'], 2); ?></td>
+                                        <td class="text-right"><?php echo number_format($detail['amount'], 2); ?></td>
                                         <td class="text-right">
                                             <a class="btn btn-default"  href="edit_releasing.php?id=<?php echo $detail['id']; ?>">
                                                 <i class="glyphicon glyphicon-pencil"></i>
