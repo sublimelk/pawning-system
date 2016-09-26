@@ -35,8 +35,8 @@ $invoice_id = SystemData::getInvoiceId();
                                     <th>Invoice Number</th>
                                     <th>Name</th>
                                     <th>Date</th>
-                                    <th>Amount</th>
-                                    <th>Edit</th>
+                                    <th class="text-right">Amount</th>
+                                    <th class="text-right">Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,7 +48,7 @@ $invoice_id = SystemData::getInvoiceId();
                                         <td><?php echo SystemData::viewInvoiceId($detail['id']); ?></td>
                                         <td><?php echo Customer::getCustomersById($detail['customer'])["name"]; ?></td>
                                         <td><?php echo $detail['date']; ?></td>
-                                        <td><?php echo $detail['amount']; ?></td>
+                                        <td class="text-right"><?php echo $detail['amount']; ?></td>
                                         <td class="text-right">
                                             <a class="btn btn-default"  href="edit_pawning.php?id=<?php echo $detail['id']; ?>">
                                                 <i class="glyphicon glyphicon-pencil"></i>
