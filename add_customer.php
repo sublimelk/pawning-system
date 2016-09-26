@@ -3,20 +3,37 @@ include './includes.php';
 
 $message = NULL;
 
+
+
 if (isset($_POST['save'])) {
 
-    $res = Customer::addCustomer($_POST);
+    $nic = Customer::checkNIC($_POST['nic']);
 
-    if ($res) {
-        $message = ' You successfully add Customer  ';
+    if ($nic == TRUE) {
+
+        $message = 'This Customer is Already Exists !';
     } else {
-        $message = ' Not successfully add Customer ';
+
+        $res = Customer::addCustomer($_POST);
+
+        if ($res) {
+
+            $message = ' You successfully add Customer  ';
+        } else {
+
+            $message = ' Not successfully add Customer ';
+        }
     }
 
+
+
+
+
+
     $customerId = mysql_insert_id();
-    
+
     if ($_FILES["fileToUpload"]["error"] == 0) {
-        
+
         Customer::setPhoto($customerId, $_FILES);
     }
 }
@@ -40,7 +57,7 @@ if (isset($_POST['save'])) {
             if ($message) {
                 ?>
                 <div class="alert alert-dismissible" role="alert">
-                    <a href="#" class="alert-link"><?php echo $message;?></a>
+                    <a href="#" class="alert-link"><?php echo $message; ?></a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
