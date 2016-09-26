@@ -41,7 +41,23 @@ $interest = SystemData::getInterest();
                 $('#datetimepicker1').datetimepicker({
                     language: 'pt-BR',
                 });
+                
+                 $('#weight, #car_size').on('keyup change', function () {
+                    calTotal()
+                });
+                
             });
+            
+            function calTotal() {
+                var weight = parseFloat($('#weight').val());
+                var price = parseFloat($("#car_size").children(":selected").attr("id"));
+                var tot = price * weight;
+                if (!tot) {
+                    tot = 0;
+                }
+                $('#amount').val(tot.toFixed(2));
+            }
+            
         </script>
     </head>
     <body>
@@ -78,7 +94,7 @@ $interest = SystemData::getInterest();
                                     <label for="date" class="col-sm-3 control-label">Date</label>
                                     <div class="col-sm-9">
                                         <div id="datetimepicker1" class="input-append date"> 
-                                            <input data-format="yyyy-MM-dd hh:mm:ss" name="date" class="form-control date_picker" required="TRUE" value="<?php echo $detail['date']; ?>"/> 
+                                            <input data-format="yyyy-MM-dd hh:mm:ss" name="date" id="date" class="form-control date_picker" required="TRUE" value="<?php echo $detail['date']; ?>"/> 
                                             <span class="add-on">
                                                 <i class="glyphicon glyphicon-calendar" ></i>
                                             </span>
@@ -90,7 +106,7 @@ $interest = SystemData::getInterest();
                                 <div class="form-group">
                                     <label for="customer" class="col-sm-3 control-label">Customer</label>
                                     <div class="col-sm-9">
-                                        <select name="customer" class="form-control"> 
+                                        <select name="customer" id="customer" class="form-control"> 
                                             <option value=""> --- Please Select --- </option>
                                             <?php
                                             foreach (Customer::getCustomers() as $customer) {
@@ -113,7 +129,7 @@ $interest = SystemData::getInterest();
                                 <div class="form-group">
                                     <label for="item_type" class="col-sm-3 control-label">Item Type</label>
                                     <div class="col-sm-9">
-                                        <select name="item_type" class="form-control"> 
+                                        <select name="item_type" id="item_type" class="form-control"> 
                                             <?php
                                             foreach (SystemData::getItemTypes() as $key => $type) {
 
@@ -135,17 +151,17 @@ $interest = SystemData::getInterest();
                                 <div class="form-group">
                                     <label for="car_size" class="col-sm-3 control-label">Carat Size</label>
                                     <div class="col-sm-9">
-                                        <select name="car_size" class="form-control">
+                                        <select name="car_size" class="form-control" id="car_size">
                                             <?php
                                             foreach (Carat::getAll() as $size) {
 
                                                 if ($size['id'] == $detail['car_size']) {
                                                     ?>
-                                                    <option value="<?php echo $size['id']; ?>" selected=""> <?php echo $size['size']; ?></option>
+                                            <option value="<?php echo $size['id']; ?>" id="<?php echo $size['price'];?>" selected=""> <?php echo $size['size']; ?></option>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <option value="<?php echo $size['id']; ?>"> <?php echo $size['size']; ?></option>
+                                                    <option value="<?php echo $size['id']; ?>" id="<?php echo $size['price'];?>"> <?php echo $size['size']; ?></option>
                                                     <?php
                                                 }
                                             }

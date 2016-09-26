@@ -82,9 +82,9 @@ class Pawning {
         $db = new DB();
 
         $query = "SELECT * FROM `pawning` WHERE `id` = '" . $id . "' LIMIT 1";
-
+        
         $result = $db->readQuery($query);
-
+        
         $row = mysql_fetch_assoc($result);
 
         return $row;
