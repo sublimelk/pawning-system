@@ -56,7 +56,7 @@ if (isset($_POST['save'])) {
             <?php
             if ($message) {
                 ?>
-                <div class="alert alert-dismissible" role="alert">
+                <div class="alert alert-info" role="alert">
                     <a href="#" class="alert-link"><?php echo $message; ?></a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
