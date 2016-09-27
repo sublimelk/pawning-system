@@ -55,7 +55,7 @@ if (isset($_POST['search'])) {
                                         <label for="day_from" class="col-sm-3 control-label">Day From</label>
                                         <div class="col-sm-9">
                                             <div id="" class="datetimepicker1 input-append date"> 
-                                                <input data-format="yyyy-MM-dd" name="day_from" id="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>"/> 
+                                                <input data-format="yyyy-MM-dd" name="day_from" id="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>" required="TRUE"/> 
                                                 <span class="add-on">
                                                     <i class="glyphicon glyphicon-calendar" ></i>
                                                 </span>
@@ -110,7 +110,7 @@ if (isset($_POST['search'])) {
                                 <th>Item Type</th>
                                 <th>Carat Size</th>
                                 <th>Weight</th>
-                                <th>isRelease</th>
+                                <th>Is Release</th>
                                 <th class="text-right">Value</th>
                             </tr>
 
