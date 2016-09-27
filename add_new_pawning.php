@@ -34,8 +34,7 @@ $car_details = Carat::getAll();
         <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script> 
         <script src="js/togelmenu.js" type="text/javascript"></script>
         <script src="js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
-
-        <script type="text/javascript">
+<script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker({
                     language: 'pt-BR',
@@ -58,6 +57,7 @@ $car_details = Carat::getAll();
             }
 
         </script>
+        
     </head>
     <body>
         <div class="container-fluid">
@@ -65,7 +65,7 @@ $car_details = Carat::getAll();
             <?php
             if ($message) {
                 ?>
-                <div class="alert alert-dismissible" role="alert">
+                <div class="alert alert-info" role="alert">
                     <a href="#" class="alert-link"><?php echo $message;?></a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
