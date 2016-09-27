@@ -66,7 +66,7 @@ $interest = SystemData::getInterest();
             <?php
             if ($message) {
                 ?>
-                <div class="alert alert-dismissible" role="alert">
+                <div class="alert alert-info" role="alert">
                     <a href="#" class="alert-link"><?php echo $message;?></a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -106,7 +106,7 @@ $interest = SystemData::getInterest();
                                 <div class="form-group">
                                     <label for="customer" class="col-sm-3 control-label">Customer</label>
                                     <div class="col-sm-9">
-                                        <select name="customer" id="customer" class="form-control"> 
+                                        <select name="customer" id="customer" class="form-control" required="TRUE"> 
                                             <option value=""> --- Please Select --- </option>
                                             <?php
                                             foreach (Customer::getCustomers() as $customer) {
