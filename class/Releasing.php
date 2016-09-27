@@ -46,7 +46,7 @@ class Releasing {
         
         $db = new DB();
 
-        $sql = "UPDATE `releasing` SET `date` = '" . $_POST['date'] . "', `settle_amount` = '" . $_POST['amount'] . "', `releasing_interest` = '" . $_POST['interest'] . "'  WHERE id = $id ";
+        $sql = "UPDATE `releasing` SET `date` = '" . $_POST['day_to'] . "', `interest_amount` = '" . $_POST['int_amount'] . "',`settle_amount` = '" . $_POST['amount'] . "', `releasing_interest` = '" . $_POST['interest'] . "'  WHERE id = $id ";
 
         $result = $db->readQuery($sql);
 
