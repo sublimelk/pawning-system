@@ -24,7 +24,7 @@ if (isset($_POST['btnsubmit'])) {
     </head>
     <body>
         <div class="container-fluid">
-            <?php include './navigation.php';  ?>
+            <?php include './navigation.php'; ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Change Administrator Details</h3>
