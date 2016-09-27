@@ -54,7 +54,7 @@ $details = Releasing::getAll();
                                         <td><?php echo $detail['invoice']; ?></td>
                                         <td><?php echo $detail['customer']; ?></td>
                                         <td><?php echo $detail['nic']; ?></td>
-                                        <td><?php echo $detail['interest']; ?></td>
+                                        <td class="text-center"><?php echo $detail['interest']; ?></td>
                                         <td class="text-right"><?php echo number_format($detail['int_amount'], 2); ?></td>
                                         <td class="text-right"><?php echo number_format($detail['amount'], 2); ?></td>
                                         <td class="text-right">
