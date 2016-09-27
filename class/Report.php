@@ -108,7 +108,7 @@ class Report {
 
         $db = new DB();
 
-        $sql = "SELECT * FROM `pawning` WHERE";
+        $sql = "SELECT * FROM `pawning` WHERE ";
 
         $and = '';
 

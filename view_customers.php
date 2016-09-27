@@ -30,7 +30,7 @@ $customers = Customer::getCustomers();
             <?php
             if ($message) {
                 ?>
-                <div class="alert alert-dismissible" role="alert">
+                <div class="alert alert-info" role="alert">
                     <a href="#" class="alert-link"><?php echo $message; ?></a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -50,8 +50,9 @@ $customers = Customer::getCustomers();
                                 <tr>
                                     <th>Name</th>
                                     <th>NIC Number</th>
+                                    <th>Address</th>
                                     <th>Phone</th>
-                                    <th class="text-center">Options</th> 
+                                    <th class="text-right">Options</th> 
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,6 +62,7 @@ $customers = Customer::getCustomers();
                                     <tr>
                                         <td><?php echo $customer['name']; ?></td>
                                         <td><?php echo $customer['nic']; ?></td>
+                                        <td><?php echo $customer['address']; ?></td>
                                         <td><?php echo $customer['phone']; ?></td>
                                         <td class="text-right">
                                             <a class="btn btn-default" href="view_customer.php?id=<?php echo $customer['id']; ?>">
