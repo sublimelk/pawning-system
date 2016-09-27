@@ -5,17 +5,28 @@ $message = NULL;
 
 $showBody = 0;
 $showId = '';
+$message = NULL;
 
 if (isset($_GET['id'])) {
-    $showBody = 1;
+
     $id = $_GET['id'];
 
     $showId = $id;
 
     $pawning = Pawning::getPawningById($id);
+    
+    if($pawning['isRelease'] == 1){
+        $message = 'You Selected invoice Number is Already Released !';
+    }elseif ($pawning) {
+        $showBody = 1;
+    } else {
+        $message = 'Invoice number not found !';
+    }
 
     $customers = Customer::getCustomersById($pawning['customer']);
 }
+
+
 
 if (isset($_POST['save'])) {
     $showBody = 1;
@@ -60,7 +71,7 @@ if (isset($_POST['save'])) {
                     var int = ($("#interest").val());
                     var amn = ($("#value").val());
 
-                    var amount = ((mon * amn * int / 100) / 12)
+                    var amount = ((mon * amn * int / 100))
 
                     $('#int_amount').val(amount);
 
@@ -90,7 +101,7 @@ if (isset($_POST['save'])) {
             <?php
             if ($message) {
                 ?>
-                <div class="alert alert-dismissible" role="alert">
+                <div class="alert alert-info" role="alert">
                     <a href="#" class="alert-link"><?php echo $message; ?></a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -119,7 +130,7 @@ if (isset($_POST['save'])) {
                     </form>
                 </div>
                 <?php
-                if ($showBody == TRUE) {
+                if ($showBody) {
                     ?>
                     <div class="panel-body">
                         <div class="row">
@@ -288,12 +299,6 @@ if (isset($_POST['save'])) {
                             </div>
                         </div>
                     </div> 
-                    <?php
-                } else {
-                    ?>
-                    <div class = "alert alert-dismissible" role = "alert">
-                        <a class ="alert-info">No Values Found in Database</a>
-                    </div>
                     <?php
                 }
                 ?>
