@@ -7,18 +7,18 @@ $customer = Customer::getCustomers();
     <div class="overlapblackbg"></div>
     <div class="wsmobileheader clearfix">
         <a id="wsnavtoggle" class="animated-arrow"><span></span></a>
-        <a class="smallogo"><img src="images/logo.jpg" width="87" alt="" /></a>
+        <a class="smallogo"></a>
     </div>
     <div class="wsmain ">
         <div class="smllogo"><a href="index.php"><img src="" alt=""/></a></div>
 
         <nav class="wsmenu clearfix">
             <ul class="mobile-sub wsmenu-list">
-                <li class="rightmenu">
+                <li class="rightmenu pull-right">
                     <a href="log-out.php">Logout</a>
                 </li>
-
-                <li><a href="#" class="active menuhomeicon"><i class="fa fa-home"></i><span class="mobiletext">Home</span></a></li>
+                
+                <li><a href="index.php" class="active menuhomeicon"><i class="fa fa-home"></i><span class="mobiletext">Home</span></a></li>
                 <li><a href="#"><i class="fa fa-align-justify"></i>Customers <span class="arrow"></span></a>
                     <ul class="wsmenu-submenu">
                         <li><a href="add_customer.php"><i class="fa fa-angle-right"></i>Add New </a></li>
