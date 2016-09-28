@@ -1,5 +1,12 @@
 <?php
-session_start();
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (!$_SESSION['login']) {
+    header('location: login.php');
+}
 
 date_default_timezone_set("Asia/Calcutta");
  

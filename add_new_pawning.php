@@ -1,6 +1,14 @@
 <?php
 include './includes.php';
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+if (!$_SESSION['login']) {
+    header('location: login.php');
+}
+
 $message = NULL;
 
 if (isset($_POST['save'])) {

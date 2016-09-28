@@ -3,8 +3,6 @@ include './includes.php';
 
 $message = NULL;
 
-
-
 if (isset($_POST['save'])) {
 
     $nic = Customer::checkNIC($_POST['nic']);
@@ -24,11 +22,6 @@ if (isset($_POST['save'])) {
             $message = ' Not successfully add Customer ';
         }
     }
-
-
-
-
-
 
     $customerId = mysql_insert_id();
 
