@@ -1,10 +1,13 @@
-
 <?php
-include './includes.php';
+session_start();
+
+include './class/DB.php';
+include './class/User.php';
 
 if (isset($_POST['btnLogin'])) {
+    
+$result = User::loginUser($_POST);
 
-    $result = User::loginUser($_POST);
 }
 ?>
 <!DOCTYPE html> 

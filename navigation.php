@@ -14,11 +14,8 @@ $customer = Customer::getCustomers();
 
         <nav class="wsmenu clearfix">
             <ul class="mobile-sub wsmenu-list">
-                <li class="rightmenu pull-right">
-                    <a href="log-out.php">Logout</a>
-                </li>
                 
-                <li><a href="index.php" class="active menuhomeicon"><i class="fa fa-home"></i><span class="mobiletext">Home</span></a></li>
+                <li><a href="index.php" class="active menuhomeicon"><span class="mobiletext">Home</span></a></li>
                 <li><a href="#"><i class="fa fa-align-justify"></i>Customers <span class="arrow"></span></a>
                     <ul class="wsmenu-submenu">
                         <li><a href="add_customer.php"><i class="fa fa-angle-right"></i>Add New </a></li>
@@ -43,6 +40,7 @@ $customer = Customer::getCustomers();
                         <li><a href="pawning_report.php"><i class="fa fa-angle-right"></i>Pawning </a></li>
                         <li><a href="release_report.php"><i class="fa fa-angle-right"></i>Release</a></li>
                         <li><a href="pawning_items_report.php"><i class="fa fa-angle-right"></i>Item Report</a></li>
+                        <li><a href="available_items.php"><i class="fa fa-angle-right"></i>Available Item</a></li>
                     </ul>
                 </li>
                 <li><a href=""><i class="fa fa-list-alt"></i>Setting<span class="arrow"></span></a>
@@ -51,6 +49,10 @@ $customer = Customer::getCustomers();
                     </ul>
                 </li>
                 <li><a href="profile.php?id=<?php echo $user['id']; ?>"><i class="fa fa-list-alt"></i>Profile </a></li>
+            
+                <li class="rightmenu pull-right">
+                    <a href="log-out.php">Logout</a>
+                </li>
             </ul>
         </nav>
     </div>
