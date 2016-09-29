@@ -166,5 +166,40 @@ class Report {
         }
         return $array_res;
     }
+    
+    public function getCurrentItems($data){
+                        
+        $db = new DB();
+        
+        $sql = "SELECT p.id, p.date, p.item_type, p.car_size, p.weight, p.amount, c.name, c.nic FROM pawning p, customer c WHERE p.customer = c.id AND p.isRelease IS NULL ";
+        
+        if($data['item_type']){
+           $sql .= ' AND p.item_type = "' . $data["item_type"] . '"';
+        }
+        
+        if($data['car_size']){
+           $sql .= ' AND p.car_size = "' . $data["car_size"] . '"';
+        }
+        
+        $result = $db->readQuery($sql);
+        
+        $array_res = array();
+        
+        while ($row = mysql_fetch_array($result)){
+            $details = array(
+                'id' => $row['id'],
+                'date' => $row['date'],
+                'item_type' => $row['item_type'],
+                'car_size' => $row['car_size'],
+                'weight' => $row['weight'],
+                'amount' => $row['amount'],
+                'name' => $row['name'],
+                'nic' => $row['nic'],
+            );
+            
+            array_push($array_res, $details);
+        }
+        return $array_res;
+    }
 
 }
