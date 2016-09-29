@@ -14,10 +14,10 @@ if (isset($_GET['id'])) {
     $showId = $id;
 
     $pawning = Pawning::getPawningById($id);
-    
-    if($pawning['isRelease'] == 1){
+
+    if ($pawning['isRelease'] == 1) {
         $message = 'You Selected invoice Number is Already Released !';
-    }elseif ($pawning) {
+    } elseif ($pawning) {
         $showBody = 1;
     } else {
         $message = 'Invoice number not found !';
@@ -29,11 +29,14 @@ if (isset($_GET['id'])) {
 
 
 if (isset($_POST['save'])) {
+    
     $showBody = 1;
     $res = Releasing::addNew($_POST);
 
     if ($res) {
         $message = ' You successfully add new release  ';
+        $abc = 'PRINT';
+        
     } else {
         $message = ' Not successfully add new release ';
     }
@@ -41,6 +44,7 @@ if (isset($_POST['save'])) {
     Pawning::isReleasing($id);
 }
 ?>
+
 <html>
     <head>
         <title></title>
@@ -102,14 +106,23 @@ if (isset($_POST['save'])) {
             if ($message) {
                 ?>
                 <div class="alert alert-info" role="alert">
-                    <a href="#" class="alert-link"><?php echo $message; ?></a>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <a class="alert-link"><?php echo $message; ?></a>
+                        </div>
+                        <div class="col-md-1">
+                            <a href="print_release.php?id=<?php echo $pawning['id']; ?>" class="btn btn-primary text-right"><?php echo $abc; ?></a>
+                        </div>
+                        <div class="col-md-1">
+                            <button type="button" class="close pull-right" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <?php
             }
-            ?> 
+            ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Release Pawning</h3>
