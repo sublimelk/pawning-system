@@ -17,6 +17,7 @@ if (isset($_POST['save'])) {
         if ($res) {
 
             $message = ' You successfully add Customer  ';
+            $abc = 'print';
         } else {
 
             $message = ' Not successfully add Customer ';
@@ -49,8 +50,9 @@ if (isset($_POST['save'])) {
             <?php
             if ($message) {
                 ?>
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-info" role="alert" id="alertt">
                     <a href="#" class="alert-link"><?php echo $message; ?></a>
+                    <a href="printpawning.php?id<?php $_POST[id]; ?>" class="alert-link"><?php echo $abc; ?></a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -111,7 +113,7 @@ if (isset($_POST['save'])) {
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-9"> 
-                                        <input type="submit" class="btn btn-default" id="btn-submit" value="save" name="save">
+                                        <input type="submit" class="btn btn-default pull-right" id="btn-submit" value="save" name="save">
                                     </div>
                                 </div>
 
