@@ -1,9 +1,6 @@
 <?php
 include './includes.php';
 
-if (!User::isLoginUser()) {
-    header('location: login.php');
-}
 ?>
 
 
