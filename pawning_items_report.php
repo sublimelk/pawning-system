@@ -1,14 +1,19 @@
 <?php
 include './includes.php';
 $result = NULL;
-
+$message = NULL;
 $dateFrom = NULL;
 $dateTo = NULL;
 $isRelease = NULL;
 
 if (isset($_POST['search'])) {
+    
     $result = Report::getPawningItems($_POST);
-
+    
+    if ($result == FALSE) {
+        $message = 'You Selected Item Not Found !';
+    }
+    
     $dateFrom = $_POST['day_from'];
     $dateTo = $_POST['day_to'];
     $isRelease = $_POST['isRelease'];
@@ -42,6 +47,18 @@ if (isset($_POST['search'])) {
     <body>
         <div class="container-fluid"> 
             <?php include './navigation.php'; ?>
+            <?php
+            if ($message) {
+                ?>
+                <div class="alert alert-info" role="alert">
+                    <a href="#" class="alert-link"><?php echo $message; ?></a>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php
+            }
+            ?>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Item Report</h3>
@@ -55,7 +72,7 @@ if (isset($_POST['search'])) {
                                         <label for="day_from" class="col-sm-3 control-label">Day From</label>
                                         <div class="col-sm-9">
                                             <div id="" class="datetimepicker1 input-append date"> 
-                                                <input data-format="yyyy-MM-dd" name="day_from" id="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>" required="TRUE"/> 
+                                                <input data-format="yyyy-MM-dd" name="day_from" id="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>" required="TRUE" autocomplete="off"/> 
                                                 <span class="add-on">
                                                     <i class="glyphicon glyphicon-calendar" ></i>
                                                 </span>
@@ -69,7 +86,7 @@ if (isset($_POST['search'])) {
                                         <label for="day_to" class="col-sm-3 control-label">Day To</label>
                                         <div class="col-sm-9">
                                             <div id="" class="datetimepicker1 input-append date"> 
-                                                <input data-format="yyyy-MM-dd" name="day_to" id="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>"/> 
+                                                <input data-format="yyyy-MM-dd" name="day_to" id="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>" autocomplete="off"/> 
                                                 <span class="add-on">
                                                     <i class="glyphicon glyphicon-calendar" ></i>
                                                 </span>
