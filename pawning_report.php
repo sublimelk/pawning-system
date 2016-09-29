@@ -14,9 +14,10 @@ if (isset($_POST['search'])) {
         $message = 'Please Select Wahat is You Find ?';
     }  else {
            $result = Report::getPawningReport($_POST);
+           if($result == FALSE){
+               $message = 'You Selected Item Not Found !';
+           }
     }
- 
-
 
     $dateFrom = $_POST['day_from'];
     $dateTo = $_POST['day_to'];
@@ -76,7 +77,7 @@ if (isset($_POST['search'])) {
                                         <label for="day_from" class="col-sm-5 control-label">Day From</label>
                                         <div class="col-sm-7">
                                             <div id="" class="datetimepicker1 input-append date"> 
-                                                <input data-format="yyyy-MM-dd" name="day_from" id="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>"/> 
+                                                <input data-format="yyyy-MM-dd" name="day_from" id="day_from" class="form-control date_picker" value="<?php echo $dateFrom; ?>" autocomplete="off"/> 
                                                 <span class="add-on">
                                                     <i class="glyphicon glyphicon-calendar" ></i>
                                                 </span>
@@ -90,7 +91,7 @@ if (isset($_POST['search'])) {
                                         <label for="day_to" class="col-sm-5 control-label">Day To</label>
                                         <div class="col-sm-7">
                                             <div id="" class="datetimepicker1 input-append date"> 
-                                                <input data-format="yyyy-MM-dd" name="day_to" id="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>"/> 
+                                                <input data-format="yyyy-MM-dd" name="day_to" id="day_to" class="form-control date_picker" value="<?php echo $dateTo; ?>" autocomplete="off"/> 
                                                 <span class="add-on">
                                                     <i class="glyphicon glyphicon-calendar" ></i>
                                                 </span>
@@ -103,7 +104,7 @@ if (isset($_POST['search'])) {
                                     <div class="form-group">
                                         <label for="invoice" class="col-sm-6 control-label">Invoice Number</label>
                                         <div class="col-sm-6">
-                                            <input type="text" name="invoice" id="invoice"  value="<?php echo $invoice; ?>"class="form-control">
+                                            <input type="text" name="invoice" id="invoice"  value="<?php echo $invoice; ?>"class="form-control" autocomplete="off">
                                         </div>
                                     </div> 
                                 </div>
@@ -112,7 +113,7 @@ if (isset($_POST['search'])) {
                                     <div class="form-group">
                                         <label for="nic" class="col-sm-5 control-label">NIC</label>
                                         <div class="col-sm-7">
-                                            <input type="text" name="nic" id="nic" class="form-control"  value="<?php echo $nic; ?>">
+                                            <input type="text" name="nic" id="nic" class="form-control"  value="<?php echo $nic; ?>" autocomplete="off">
                                         </div>
                                     </div> 
                                 </div>
