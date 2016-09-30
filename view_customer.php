@@ -79,69 +79,69 @@ $carat = Carat::getAll();
                                 </div>
                             </div>
                         </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Pawninig</h3>
-                            </div>
-                            <?php
-                            if ($pawnings) {
-                                ?>
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="table-responsive"> 
-                                            <table class="table table-striped">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        <th>Item Type</th>
-                                                        <th>Carat Size</th>
-                                                        <th>Weight</th>
-                                                        <th>Interest</th>
-                                                        <th class="text-right">Amount</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    foreach ($pawnings as $pawning) {
-                                                        ?>
-                                                        <tr>
-                                                            <td><?php echo $pawning['date']; ?></td>
-                                                            <td><?php echo SystemData::getItemTypes()[$pawning['item_type']]; ?></td>
-                                                            <?php
-                                                            foreach (Carat::getAll() as $size) {
-
-                                                                if ($size['id'] == $pawning['car_size']) {
-                                                                    ?>
-                                                                    <td><?php echo $size['size']; ?></td>
-                                                                    <?php
-                                                                }
-                                                            }
-                                                            ?>
-
-                                                            <td><?php echo $pawning['weight']; ?></td>
-                                                            <td><?php echo $pawning['interest'] . '%'; ?></td>
-                                                            <td class="text-right"><?php echo number_format($pawning['amount'], 2) . "<br>"; ?></td>
-
-                                                        </tr>
-                                                        <?php
-                                                    }
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Pawninig</h3>
+                        </div>
+                        <?php
+                        if ($pawnings) {
+                            ?>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="table-responsive"> 
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Item Type</th>
+                                                    <th>Carat Size</th>
+                                                    <th>Weight</th>
+                                                    <th>Interest</th>
+                                                    <th class="text-right">Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                foreach ($pawnings as $pawning) {
                                                     ?>
+                                                    <tr>
+                                                        <td><?php echo $pawning['date']; ?></td>
+                                                        <td><?php echo SystemData::getItemTypes()[$pawning['item_type']]; ?></td>
+                                                        <?php
+                                                        foreach (Carat::getAll() as $size) {
+
+                                                            if ($size['id'] == $pawning['car_size']) {
+                                                                ?>
+                                                                <td><?php echo $size['size']; ?></td>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+
+                                                        <td><?php echo $pawning['weight']; ?></td>
+                                                        <td><?php echo $pawning['interest'] . '%'; ?></td>
+                                                        <td class="text-right"><?php echo number_format($pawning['amount'], 2) . "<br>"; ?></td>
+
                                                     </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                    <?php
+                                                }
+                                                ?>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                                <?php
-                            } else {
-                                ?>
-                                <div class = "alert alert-info">
-                                There are no item to show !
-                                </div>
+                            </div>
                             <?php
-                            }
+                        } else {
                             ?>
-                        </div>
+                            <div class = "alert alert-info">
+                                There are no item to show !
+                            </div>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>

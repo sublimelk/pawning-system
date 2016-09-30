@@ -39,7 +39,7 @@ $details = Releasing::getAll();
                                     <th>Invoice Number</th>
                                     <th>Customer Name</th>
                                     <th>NIC</th>
-                                    <th>Interest Rate</th>
+                                    <th class="text-right">Interest Rate</th>
                                     <th class="text-right">Interest Amount</th>
                                     <th class="text-right">Settle Amount</th>
                                 </tr>
@@ -54,7 +54,7 @@ $details = Releasing::getAll();
                                         <td><?php echo $detail['invoice']; ?></td>
                                         <td><?php echo $detail['customer']; ?></td>
                                         <td><?php echo $detail['nic']; ?></td>
-                                        <td class="text-center"><?php echo $detail['interest']; ?></td>
+                                        <td class="text-right"><?php echo $detail['interest']; ?></td>
                                         <td class="text-right"><?php echo number_format($detail['int_amount'], 2); ?></td>
                                         <td class="text-right"><?php echo number_format($detail['amount'], 2); ?></td>
                                         <td class="text-right">
