@@ -33,7 +33,7 @@ class SystemData {
 
         $new_invoice = ++$row["MAX(id)"];
 
-        $new_invoice_id = sprintf("%07s", $new_invoice);
+        $new_invoice_id = sprintf("%05s", $new_invoice);
 
         return $new_invoice_id;
     }
