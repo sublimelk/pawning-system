@@ -64,6 +64,19 @@ class Releasing {
         $row = mysql_fetch_array($result);
 
         return $row;
+    } 
+    
+    public function getAllByPawning($id) {
+        
+        $query = "SELECT * FROM `releasing` WHERE `pawning` = '$id' LIMIT 1";
+
+        $db = new DB();
+        
+        $result = $db->readQuery($query);
+
+        $row = mysql_fetch_array($result);
+
+        return $row;
     }
 
 }
