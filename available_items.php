@@ -4,14 +4,13 @@ include './includes.php';
 $result = "";
 $message = NULL;
 
-if(isset($_POST['search'])){
-    
+if (isset($_POST['search'])) {
+
     $result = Report::getCurrentItems($_POST);
-    
-    if($result == FALSE){
+
+    if ($result == FALSE) {
         $message = 'You Selected Item Not Found !';
     }
-    
 }
 ?>
 
@@ -91,59 +90,59 @@ if(isset($_POST['search'])){
                             </div>
                         </form>
                         <?php
-                    if ($result) {
-                        ?>
+                        if ($result) {
+                            ?>
 
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Invoice</th>
-                                <th>Date</th>
-                                <th>Customer</th>
-                                <th>NIC</th>
-                                <th>Item Type</th>
-                                <th>Carat Size</th>
-                                <th>Weight</th>
-                                <th class="text-right">Value</th>
-                            </tr>
-
-                            <?php
-                            $tot = 0;
-                            foreach ($result as $detail) {
-                                ?>
+                            <table class="table table-striped">
                                 <tr>
-                                    <td><?php echo SystemData::viewInvoiceId($detail['id']); ?></td>
-                                    <td><?php echo $detail['date']; ?></td>
-                                    <td><?php echo $detail['name']; ?></td>
-                                    <td><?php echo $detail['nic']; ?></td>
-                                    <td><?php echo SystemData::getItemTypes()[$detail['item_type']]; ?></td>
-                                    <?php
-                                    foreach (Carat::getAll() as $size) {
-
-                                        if ($size['id'] == $detail['car_size']) {
-                                            ?>
-                                            <td><?php echo $size['size']; ?></td>
-                                            <?php
-                                        }
-                                    }
-                                    ?>
-                                    <td><?php echo $detail['weight']; ?></td>
-                                    <td class="text-right"><?php echo number_format($detail['amount'], 2); ?></td>
-                                    <?php
-                                    $tot = $tot + $detail['amount'];
-                                    ?>
+                                    <th>Invoice</th>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>NIC</th>
+                                    <th>Item Type</th>
+                                    <th>Carat Size</th>
+                                    <th class="text-right">Weight</th>
+                                    <th class="text-right">Value</th>
                                 </tr>
 
                                 <?php
-                            }
-                            ?>
-                            <tr>
-                                <th class="text-right" colspan="7">Total : </th>
-                                <th class="text-right" ><?php echo number_format($tot, 2); ?> </th>
-                            </tr>
-                        </table>
-                        <?php
-                    }
-                    ?>
+                                $tot = 0;
+                                foreach ($result as $detail) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo SystemData::viewInvoiceId($detail['id']); ?></td>
+                                        <td><?php echo $detail['date']; ?></td>
+                                        <td><?php echo $detail['name']; ?></td>
+                                        <td><?php echo $detail['nic']; ?></td>
+                                        <td><?php echo SystemData::getItemTypes()[$detail['item_type']]; ?></td>
+                                        <?php
+                                        foreach (Carat::getAll() as $size) {
+
+                                            if ($size['id'] == $detail['car_size']) {
+                                                ?>
+                                                <td><?php echo $size['size']; ?></td>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                        <td class="text-right"><?php echo $detail['weight']; ?></td>
+                                        <td class="text-right"><?php echo number_format($detail['amount'], 2); ?></td>
+                                        <?php
+                                        $tot = $tot + $detail['amount'];
+                                        ?>
+                                    </tr>
+
+                                    <?php
+                                }
+                                ?>
+                                <tr>
+                                    <th class="text-right" colspan="7">Total : </th>
+                                    <th class="text-right" ><?php echo number_format($tot, 2); ?> </th>
+                                </tr>
+                            </table>
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
