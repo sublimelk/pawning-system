@@ -61,4 +61,27 @@ body {
     margin-top: 40px;
 }
 
+.add_new_cus{
+    margin-left: 2550px !important;
+}
+
+.bill{
+    border-bottom:0px !important;
+}
+
+.bill th, .bill td {
+    border: 1px !important;
+}
+
+.fixed-table-container {
+    border:0px !important;
+}
+
+@media print {
+    .print{
+        visibility: hidden;  
+    }
+}
+
+
 
