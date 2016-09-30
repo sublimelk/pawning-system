@@ -126,8 +126,8 @@ if (isset($_POST['search'])) {
                                 <th>Date</th>
                                 <th>Item Type</th>
                                 <th>Carat Size</th>
-                                <th>Weight</th>
-                                <th>Is Release</th>
+                                <th class="text-right">Weight</th>
+                                <th class="text-right">Is Release</th>
                                 <th class="text-right">Value</th>
                             </tr>
 
@@ -149,8 +149,8 @@ if (isset($_POST['search'])) {
                                         }
                                     }
                                     ?>
-                                    <td><?php echo $pawning['weight']; ?></td>
-                                    <td><?php echo $pawning['isRelease']; ?></td>
+                                    <td class="text-right"><?php echo $pawning['weight']; ?></td>
+                                    <td class="text-right"><?php echo $pawning['isRelease']; ?></td>
                                     <td class="text-right"><?php echo number_format($pawning['amount'], 2); ?></td>
                                     <?php
                                     $tot = $tot + $pawning['amount'];
