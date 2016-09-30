@@ -102,7 +102,7 @@ if (isset($_POST['update'])) {
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-9"> 
-                                        <input type="submit" class="btn btn-default" id="btn-submit" value="Update" name="update">
+                                        <input type="submit" class="btn btn-default pull-right" id="btn-submit" value="Update" name="update">
                                     </div>
                                 </div>
 
