@@ -2,8 +2,8 @@
 include './includes.php';
 
 $selectedCusId = NULL;
-
 $message = NULL;
+$print = NULL;
 
 if (isset($_POST['save'])) {
 
@@ -11,7 +11,7 @@ if (isset($_POST['save'])) {
 
     if ($res) {
         $message = ' You successfully add Pawning  ';
-        $abc = 'PRINT';
+        $print = 'PRINT';
     } else {
         $message = ' Not successfully add Pawning ';
     }
@@ -102,7 +102,13 @@ $car_details = Carat::getAll();
                             <a class="alert-link"><?php echo $message; ?></a>
                         </div>
                         <div class="col-md-1">
-                            <a href="print_pawning.php?id=<?php echo ($invoice_id - 1) ?>" class="btn btn-primary text-right"><?php echo $abc; ?></a>
+                            <?php
+                            if ($print == TRUE) {
+                                ?>
+                                <a href="print_pawning.php?id=<?php echo ($invoice_id - 1) ?>" class="btn btn-primary text-right"><?php echo $print; ?></a>
+                                <?php
+                            }
+                            ?>
                         </div>
                         <div class="col-md-1">
                             <button type="button" class="close pull-right" data-dismiss="alert" aria-label="Close">
@@ -225,7 +231,7 @@ $car_details = Carat::getAll();
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-9"> 
-                                        <input type="submit" name="save" class="btn btn-default" id="btn-submit" value="save" >
+                                        <input type="submit" name="save" class="btn btn-default pull-right" id="btn-submit" value="save" >
                                     </div>
                                 </div>
                             </form> 
@@ -267,16 +273,12 @@ $car_details = Carat::getAll();
                                                         <input type="text" name="phone" class="form-control" id="phone" placeholder="PHONE" required="TRUE" autocomplete="off">
                                                     </div>
 
-                                                    <div class="form-group">
-                                                        <label for="feedback" class="form-control-label">Feedback:</label>
-                                                        <input type="number" name="feedback" class="form-control" id="feedback" placeholder="FEEDBACK" required="TRUE" autocomplete="off">
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                        <input type="submit" name="add" id="add" class="btn btn-primary pull-right" value="Add"/>
                                                     </div>
 
                                                 </form>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <input type="submit" name="add" id="add" class="btn btn-primary pull-right" value="Add"/>
-                                                </div>
                                             </div>
 
                                         </div>
