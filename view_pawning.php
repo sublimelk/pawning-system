@@ -4,6 +4,9 @@ include './includes.php';
 $details = Pawning::getPawning();
 
 $invoice_id = SystemData::getInvoiceId();
+
+$payments = Payment::getPayement();
+
 ?>
 
 
@@ -43,18 +46,21 @@ $invoice_id = SystemData::getInvoiceId();
                                 <?php
                                 foreach ($details as $detail) {
                                     ?>
-                                    
+
                                     <tr>
                                         <td><?php echo SystemData::viewInvoiceId($detail['id']); ?></td>
                                         <td><?php echo Customer::getCustomersById($detail['customer'])["name"]; ?></td>
                                         <td><?php echo $detail['date']; ?></td>
-                                        <td class="text-right"><?php echo $detail['amount']; ?></td>
+                                        <td class="text-right"><?php echo number_format($detail['amount'], 2); ?></td>
                                         <td class="text-right">
                                             <a class="btn btn-default"  href="edit_pawning.php?id=<?php echo $detail['id']; ?>">
                                                 <i class="glyphicon glyphicon-pencil"></i>
                                             </a>
                                             <a class="btn btn-default"  href="add_new_release.php?id=<?php echo $detail['id']; ?>">
                                                 <i class="glyphicon glyphicon-ban-circle"></i>
+                                            </a>
+                                            <a class="btn btn-default"  href="payment.php?id=<?php echo $detail['id']; ?>">
+                                                <i class="glyphicon glyphicon-usd"></i>
                                             </a>
                                         </td>
                                         <?php
