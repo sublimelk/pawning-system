@@ -5,7 +5,9 @@ $id = $_GET['id'];
 
 $customers = Customer::getCustomersById($id);
 
-$pawnings = Pawning::getPawningByCustomerId($id);
+$releases = Pawning::getReleasedPawningByCusID($id);
+
+$pawnings = Pawning::getPawningByCustomerID($id);
 
 $carat = Carat::getAll();
 ?>
@@ -82,7 +84,7 @@ $carat = Carat::getAll();
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Pawninig</h3>
+                            <h3 class="panel-title">Current Pawning</h3>
                         </div>
                         <?php
                         if ($pawnings) {
@@ -96,9 +98,10 @@ $carat = Carat::getAll();
                                                     <th>Date</th>
                                                     <th>Item Type</th>
                                                     <th>Carat Size</th>
-                                                    <th>Weight</th>
-                                                    <th>Interest</th>
+                                                    <th class="text-right">Weight</th>
+                                                    <th class="text-right">Interest</th>
                                                     <th class="text-right">Amount</th>
+                                                    <th class="text-right">Option</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -119,10 +122,79 @@ $carat = Carat::getAll();
                                                         }
                                                         ?>
 
-                                                        <td><?php echo $pawning['weight']; ?></td>
-                                                        <td><?php echo $pawning['interest'] . '%'; ?></td>
+                                                        <td class="text-right"><?php echo $pawning['weight']; ?></td>
+                                                        <td class="text-right"><?php echo $pawning['interest'] . '%'; ?></td>
                                                         <td class="text-right"><?php echo number_format($pawning['amount'], 2) . "<br>"; ?></td>
+                                                        <td class="text-right">
+                                                            <a class="btn btn-default"  href="edit_pawning.php?id=<?php echo $pawning['id']; ?>">
+                                                                <i class="glyphicon glyphicon-pencil"></i>
+                                                            </a>
+                                                            <a class="btn btn-default"  href="add_new_release.php?id=<?php echo $pawning['id']; ?>">
+                                                                <i class="glyphicon glyphicon-ban-circle"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                                ?>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        } else {
+                            ?>
+                            <div class = "alert alert-info">
+                                There are no item to show !
+                            </div>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Released Pawning</h3>
+                        </div>
+                        <?php
+                        if ($releases) {
+                            ?>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="table-responsive"> 
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Date</th>
+                                                    <th>Item Type</th>
+                                                    <th>Carat Size</th>
+                                                    <th class="text-right">Weight</th>
+                                                    <th class="text-right">Interest</th>
+                                                    <th class="text-right">Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                foreach ($releases as $release) {
+                                                    ?>
+                                                    <tr>
+                                                        <td><?php echo $release['date']; ?></td>
+                                                        <td><?php echo SystemData::getItemTypes()[$release['item_type']]; ?></td>
+                                                        <?php
+                                                        foreach (Carat::getAll() as $size) {
 
+                                                            if ($size['id'] == $release['car_size']) {
+                                                                ?>
+                                                                <td><?php echo $size['size']; ?></td>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+
+                                                        <td class="text-right"><?php echo $release['weight']; ?></td>
+                                                        <td class="text-right"><?php echo $release['interest'] . '%'; ?></td>
+                                                        <td class="text-right"><?php echo number_format($release['amount'], 2) . "<br>"; ?></td>
                                                     </tr>
                                                     <?php
                                                 }
