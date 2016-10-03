@@ -77,6 +77,11 @@ body {
     border:0px !important;
 }
 
+#myTable{
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
 @media print {
     .print{
         visibility: hidden;  
