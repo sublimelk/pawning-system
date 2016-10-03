@@ -58,7 +58,7 @@ class Customer {
 
         $db = new DB();
 
-        $sql = "INSERT INTO `customer` (`name`,`nic`,`address`,`phone`,`feedback`) VALUES ('" . $_POST['name'] . "','" . $_POST['nic'] . "','" . $_POST['address'] . "','" . $_POST['phone'] . "','" . $_POST['feedback'] . "')";
+        $sql = "INSERT INTO `customer` (`name`,`nic`,`address`,`phone`) VALUES ('" . $_POST['name'] . "','" . $_POST['nic'] . "','" . $_POST['address'] . "','" . $_POST['phone'] . "')";
 
         $result = $db->readQuery($sql);
 
