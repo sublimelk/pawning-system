@@ -38,8 +38,8 @@ if (isset($_POST['save'])) {
     $res = Releasing::addNew($_POST);
 
     if ($res) {
-        $message = ' You successfully add new release  ';
-        $print = 'PRINT';
+        
+        header('location: print_release.php?id=' . $id);
     } else {
         $message = ' Not successfully add new release ';
     }
@@ -126,15 +126,6 @@ if (isset($_POST['save'])) {
                     <div class="row">
                         <div class="col-md-10">
                             <a class="alert-link"><?php echo $message; ?></a>
-                        </div>
-                        <div class="col-md-1">
-                            <?php
-                            if ($print == TRUE) {
-                                ?>
-                                <a href="print_release.php?id=<?php echo $pawning['id']; ?>" class="btn btn-primary text-right"><?php echo $print; ?></a>
-                                <?php
-                            }
-                            ?>
                         </div>
                         <div class="col-md-1">
                             <button type="button" class="close pull-right" data-dismiss="alert" aria-label="Close">
