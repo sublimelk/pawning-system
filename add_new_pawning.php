@@ -3,15 +3,15 @@ include './includes.php';
 
 $selectedCusId = NULL;
 $message = NULL;
-$print = NULL;
+
 
 if (isset($_POST['save'])) {
 
     $res = Pawning::addPawning($_POST);
 
     if ($res) {
-        $message = ' You successfully add Pawning  ';
-        $print = 'PRINT';
+        $lastId = mysql_insert_id();
+        header('location: print_pawning.php?id=' . $lastId);
     } else {
         $message = ' Not successfully add Pawning ';
     }
@@ -25,10 +25,13 @@ if (isset($_POST['add'])) {
 
         $message = 'This Customer is Already Exists !';
     } else {
-
+        
         $res = Customer::addCustomer($_POST);
+        
         $lastId = mysql_insert_id();
+        
         $selectedCusId = $lastId;
+        
         if ($res) {
 
             $message = ' You Successfully Add Customer  ';
@@ -51,6 +54,10 @@ $invoice_id = SystemData::getInvoiceId();
 $interest = SystemData::getInterest();
 
 $car_details = Carat::getAll();
+
+if (isset($_GET['customer']) && !$selectedCusId) {
+    $selectedCusId = $_GET['customer'];
+}
 ?>
 <html>
     <head>
@@ -100,17 +107,8 @@ $car_details = Carat::getAll();
                     <div class="row">
                         <div class="col-md-10">
                             <a class="alert-link"><?php echo $message; ?></a>
-                        </div>
-                        <div class="col-md-1">
-                            <?php
-                            if ($print == TRUE) {
-                                ?>
-                                <a href="print_pawning.php?id=<?php echo ($invoice_id - 1) ?>" class="btn btn-primary text-right"><?php echo $print; ?></a>
-                                <?php
-                            }
-                            ?>
-                        </div>
-                        <div class="col-md-1">
+                        </div> 
+                        <div class="col-md-2">
                             <button type="button" class="close pull-right" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -127,7 +125,7 @@ $car_details = Carat::getAll();
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-sm-9">
-                            <form action="" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form">
+                            <form action="add_new_pawning.php" method="POST" enctype="multipart/form-data" class="form-horizontal" id="main-form">
                                 <div class="form-group">
                                     <label for="invoice" class="col-sm-3 control-label">Invoice Number</label>
                                     <div class="col-sm-9">
@@ -247,7 +245,7 @@ $car_details = Carat::getAll();
                                                 <h4 class="modal-title" id="exampleModalLabel">Add New Customer</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="" method="POST" enctype="multipart/form-data" class="form-group" id="popup_form">
+                                                <form action="add_new_pawning.php" method="POST" enctype="multipart/form-data" class="form-group" id="popup_form">
                                                     <div class="form-group">
                                                         <label for="name" class="form-control-label">Name:</label>
                                                         <input type="text" name="name" class="form-control" id="name" placeholder="NAME" required="TRUE" autocomplete="off">
