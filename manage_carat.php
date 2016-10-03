@@ -86,7 +86,7 @@ $details = Carat::getAll();
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                        <input type="submit" name="save" id="save" value="Add New" class="btn btn-default" />
+                                        <input type="submit" name="save" id="save" value="Add New" class="btn btn-default pull-right"/>
                                     </div>
                                 </div>
                             </div>
@@ -120,8 +120,8 @@ $details = Carat::getAll();
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group">
-                                        <div class=" pull-left">
-                                            <a class="btn btn-danger"  href="delete_carat.php?id=<?php echo $detail['id']; ?>">
+                                        <div class=" pull-right">
+                                            <a class="btn btn-danger pull-right"  href="delete_carat.php?id=<?php echo $detail['id']; ?>">
                                                 <i class="glyphicon glyphicon-trash"></i>
                                             </a>
                                         </div>
