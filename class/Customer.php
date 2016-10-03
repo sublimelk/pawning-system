@@ -43,6 +43,31 @@ class Customer {
         return $array_res;
     }
 
+    public function getDeletedCustomers() {
+        $db = new DB();
+
+        $sql = "SELECT * FROM customer WHERE `is_active` = '0'";
+
+        $result = $db->readQuery($sql);
+
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+
+            $cus = array(
+                'id' => $row['id'],
+                'name' => $row['name'],
+                'nic' => $row['nic'],
+                'address' => $row['address'],
+                'phone' => $row['phone'],
+                'feedback' => $row['feedback'],
+            );
+
+            array_push($array_res, $cus);
+        }
+        return $array_res;
+    }
+
     public function getCustomersById($id) {
         $query = "SELECT * FROM `customer` WHERE `id` = '$id' LIMIT 1";
 
@@ -80,6 +105,16 @@ class Customer {
         $db = new DB();
 
         $sql = "UPDATE `customer` SET `is_active` = '0' WHERE `id` = $id ";
+
+        $result = $db->readQuery($sql);
+
+        return $result;
+    }
+
+    public function restoreCustomer($id) {
+        $db = new DB();
+
+        $sql = "UPDATE `customer` SET `is_active` = '1' WHERE `id` = $id ";
 
         $result = $db->readQuery($sql);
 
