@@ -39,9 +39,10 @@ $details = Releasing::getAll();
                                     <th>Invoice Number</th>
                                     <th>Customer Name</th>
                                     <th>NIC</th>
-                                    <th class="text-right">Interest Rate</th>
+                                    <th class="text-right">Interest Rate (%)</th>
                                     <th class="text-right">Interest Amount</th>
                                     <th class="text-right">Settle Amount</th>
+                                    <th class="text-right">Option</th>
                                 </tr>
                             </thead>
                             <tbody>
