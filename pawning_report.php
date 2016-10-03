@@ -126,8 +126,6 @@ if (isset($_POST['search'])) {
                     <?php
                     if ($result) {
                         ?>
-
-
                         <table class="table table-striped">
                             <tr>
                                 <th>Invoice</th>

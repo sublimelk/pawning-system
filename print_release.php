@@ -70,10 +70,10 @@ $pawning = Pawning::getPawningById($id);
             </table> 
 
             <div class="row">
-                <div class="col-md-1 pull-right">
+                <div class="col-md-6">
                     <button onclick="myFunction()" class="print btn btn-primary pull-right">Print this page</button>
                 </div>
-                <div class="col-md-1 pull-right">
+                <div class="col-md-2">
                     <a href="add_new_release.php" class="print btn btn-primary">Back</a>
                 </div>
             </div>
