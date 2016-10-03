@@ -193,7 +193,7 @@ $interest = SystemData::getInterest();
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-9"> 
-                                        <input type="submit" name="save" class="btn btn-default" id="btn-submit" value="Update" >
+                                        <input type="submit" name="save" class="btn btn-default pull-right" id="btn-submit" value="Update" >
                                     </div>
                                 </div>
 
