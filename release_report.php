@@ -152,7 +152,7 @@ if (isset($_POST['search'])) {
                                     <td><?php echo $release['date']; ?></td>
                                     <td><?php echo $release['name']; ?></td>
                                     <td><?php echo $release['nic']; ?></td>
-                                    <td class="text-right"><?php echo $release['settle_amount']; ?></td>
+                                    <td class="text-right"><?php echo number_format($release['settle_amount'], 2); ?></td>
                                 </tr>
                                 <?php
                                 $tot = $tot + $release['settle_amount'];
