@@ -2,7 +2,7 @@
 include './includes.php';
 
 $message = NULL;
-
+$customerId = NULL;
 if (isset($_POST['save'])) {
 
     $nic = Customer::checkNIC($_POST['nic']);
@@ -52,6 +52,13 @@ if (isset($_POST['save'])) {
                 ?>
                 <div class="alert alert-info" role="alert" id="alertt">
                     <a href="#" class="alert-link"><?php echo $message; ?></a>
+                    <?php
+                    if ($customerId) {
+                        ?>
+                        &nbsp;&nbsp;&nbsp;<a href="add_new_pawning.php?customer=<?php echo $customerId; ?>" class="btn btn-sm btn-default">Add Pawning</a>
+                        <?php
+                    }
+                    ?> 
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
