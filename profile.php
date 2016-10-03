@@ -1,12 +1,23 @@
 <?php
 include './includes.php';
 
+$message = NULL;
+
 $id = $_GET['id'];
 $user = User::getUser();
 
 if (isset($_POST['btnsubmit'])) {
 
-    User::editUser($id);
+    $user = User::editUser($id);
+    
+    if ($user) {
+
+            $message = ' You successfully Update User Details  ';
+            
+        } else {
+
+            $message = ' Not successfully Update User Details ! ';
+        }
 }
 ?>
 <!DOCTYPE html> 
@@ -25,6 +36,18 @@ if (isset($_POST['btnsubmit'])) {
     <body>
         <div class="container-fluid">
             <?php include './navigation.php'; ?>
+            <?php
+            if ($message) {
+                ?>
+                <div class="alert alert-info" role="alert" id="alertt">
+                    <a href="#" class="alert-link"><?php echo $message; ?></a>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <?php
+            }
+            ?> 
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Change Administrator Details</h3>
@@ -42,22 +65,22 @@ if (isset($_POST['btnsubmit'])) {
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="image" class="col-sm-3 control-label">User Name</label>
+                                    <label for="username" class="col-sm-3 control-label">User Name</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="nic" id="nic" class="form-control" value="<?php echo $user['username']; ?>"/> 
+                                        <input type="text" name="username" id="username" class="form-control" value="<?php echo $user['username']; ?>"/> 
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="seo" class="col-sm-3 control-label">Password</label>
+                                    <label for="password" class="col-sm-3 control-label">Password</label>
                                     <div class="col-sm-9">
-                                        <input type="text" name="phone" id="phone" class="form-control" value="<?php echo $user['password']; ?>"/>
+                                        <input type="text" name="password" id="password" class="form-control" value="<?php echo $user['password']; ?>"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-9"> 
-                                        <input type="submit" class="btn btn-default" id="btn-submit" value="save" name="btnsubmit">
+                                        <input type="submit" class="btn btn-default pull-right" id="btn-submit" value="save" name="btnsubmit">
                                     </div>
                                 </div>
 
