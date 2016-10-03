@@ -48,10 +48,8 @@ class Report {
             array_push($array_res, $releas);
         }
 
-
         return $array_res;
     }
-    
 
     public function getReleaseReport($data) {
 
@@ -102,7 +100,6 @@ class Report {
         }
         return $array_res;
     }
-    
 
     public function getPawningItems($data) {
 
@@ -138,14 +135,14 @@ class Report {
 
             if ($_POST['isRelease'] == "1") {
 
-                $sql .=  $and . ' `isRelease`   =  "' . $_POST['isRelease'] . '"  ';
+                $sql .= $and . ' `isRelease`   =  "' . $_POST['isRelease'] . '"  ';
             } else {
 
-                $sql .=  $and . ' `isRelease`  IS NULL';
+                $sql .= $and . ' `isRelease`  IS NULL';
             }
         }
 
-     
+
         $result = $db->readQuery($sql);
 
         $array_res = array();
@@ -166,26 +163,26 @@ class Report {
         }
         return $array_res;
     }
-    
-    public function getCurrentItems($data){
-                        
+
+    public function getCurrentItems($data) {
+
         $db = new DB();
-        
+
         $sql = "SELECT p.id, p.date, p.item_type, p.car_size, p.weight, p.amount, c.name, c.nic FROM pawning p, customer c WHERE p.customer = c.id AND p.isRelease IS NULL ";
-        
-        if($data['item_type']){
-           $sql .= ' AND p.item_type = "' . $data["item_type"] . '"';
+
+        if ($data['item_type']) {
+            $sql .= ' AND p.item_type = "' . $data["item_type"] . '"';
         }
-        
-        if($data['car_size']){
-           $sql .= ' AND p.car_size = "' . $data["car_size"] . '"';
+
+        if ($data['car_size']) {
+            $sql .= ' AND p.car_size = "' . $data["car_size"] . '"';
         }
-        
+
         $result = $db->readQuery($sql);
-        
+
         $array_res = array();
-        
-        while ($row = mysql_fetch_array($result)){
+
+        while ($row = mysql_fetch_array($result)) {
             $details = array(
                 'id' => $row['id'],
                 'date' => $row['date'],
@@ -196,8 +193,56 @@ class Report {
                 'name' => $row['name'],
                 'nic' => $row['nic'],
             );
-            
+
             array_push($array_res, $details);
+        }
+        return $array_res;
+    }
+
+    public function getPaymentByPawning($data) {
+
+        $db = new DB();
+
+        $sql = "SELECT * FROM `payment` WHERE  ";
+
+        if ($data["day_from"] && !$data["day_to"]) {
+
+            $date1 = strtotime($data["day_from"] . '00:00:00') - 1;
+
+            $date2 = strtotime($data["day_from"] . '24:00:00');
+
+            $sql .= '  UNIX_TIMESTAMP (date) BETWEEN "' . $date1 . '" AND "' . $date2 . '"  ';
+        }
+
+        if ($data["day_from"] && $data["day_to"]) {
+
+            $date1 = strtotime($data["day_from"] . '00:00:00');
+
+            $date2 = strtotime($data["day_to"] . '24:00:00');
+
+            $sql .= ' UNIX_TIMESTAMP(date)  BETWEEN "' . $date1 . '" AND "' . $date2 . '"  ';
+        }
+        
+        if ($_POST['invoice']) {
+
+            $sql .=' AND `pawning` =  "' . $data['invoice'] . '"  ';
+        }
+
+        $result = $db->readQuery($sql);
+
+        $array_res = array();
+
+        while ($row = mysql_fetch_array($result)) {
+
+            $payment = array(
+                'id' => $row['id'],
+                'pawning' => $row['pawning'],
+                'date' => $row['date'],
+                'interest' => $row['interest'],
+                'payment' => $row['payment']
+            );
+
+            array_push($array_res, $payment);
         }
         return $array_res;
     }
