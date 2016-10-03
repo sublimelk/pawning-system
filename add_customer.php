@@ -52,7 +52,6 @@ if (isset($_POST['save'])) {
                 ?>
                 <div class="alert alert-info" role="alert" id="alertt">
                     <a href="#" class="alert-link"><?php echo $message; ?></a>
-                    <a href="printpawning.php?id<?php $_POST[id]; ?>" class="alert-link"><?php echo $abc; ?></a>
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -101,13 +100,6 @@ if (isset($_POST['save'])) {
                                     <label for="phone" class="col-sm-3 control-label">Phone</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="phone" id="phone" class="form-control" placeholder="PHONE" required="TRUE" autocomplete="off"/>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="feedback" class="col-sm-3 control-label">Feedback</label>
-                                    <div class="col-sm-9">
-                                        <input type="number" name="feedback" id="feedback" class="form-control" placeholder="FEEDBACK" required="TRUE" autocomplete="off">
                                     </div>
                                 </div>
 
