@@ -16,7 +16,7 @@ class User {
         
         $db = new DB();
         
-        $sql = "SELECT * FROM user";
+        $sql = "SELECT * FROM `user` ";
         
         $result = $db->readQuery($sql);
         
