@@ -19,4 +19,5 @@ include './class/ImageResizer.php';
 include './class/Releasing.php';
 include './class/Report.php';
 include './class/Carat.php';
+include './class/Payment.php';
  
