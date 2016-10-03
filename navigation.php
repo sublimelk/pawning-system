@@ -25,8 +25,8 @@ $customer = Customer::getCustomers();
                 <li><a href="#"><i class="fa fa-list-alt"></i>Pawning <span class="arrow"></span></a>
                     <ul class="wsmenu-submenu">
                         <li><a href="add_new_pawning.php"><i class="fa fa-angle-right"></i>Add New </a></li>
-                        <li><a href="view_pawning.php"><i class="fa fa-angle-right"></i>View</a></li>
-                        <li><a href="view_released_pawning.php"><i class="fa fa-angle-right"></i>View Released</a></li>
+                        <li><a href="view_pawning.php"><i class="fa fa-angle-right"></i>Current Pawning</a></li>
+                        <li><a href="view_released_pawning.php"><i class="fa fa-angle-right"></i>Released Pawning</a></li>
                     </ul>
                 </li>
                 <li><a href="#"><i class="fa fa-list-alt"></i>Releasing <span class="arrow"></span></a>
@@ -41,6 +41,7 @@ $customer = Customer::getCustomers();
                         <li><a href="release_report.php"><i class="fa fa-angle-right"></i>Release</a></li>
                         <li><a href="pawning_items_report.php"><i class="fa fa-angle-right"></i>Item Report</a></li>
                         <li><a href="available_items.php"><i class="fa fa-angle-right"></i>Available Item</a></li>
+                        <li><a href="payed_report.php"><i class="fa fa-angle-right"></i>Payed Report</a></li>
                     </ul>
                 </li>
                 <li><a href=""><i class="fa fa-list-alt"></i>Setting<span class="arrow"></span></a>
